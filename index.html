@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>Wayve Wear · IronTrack hero-video review</title>
+  <title>Wayve Wear · IronTrack customer-audience review</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <style>
     :root{--bg:#f4f4f5;--bg-image:none;--panel:#FFFFFF;--ink:#002927;--muted:#767a80;--line:#e9eaec;--accent:#e1763d;--accent-soft:rgba(225,118,61,0.1);--radius:0px;--font-head:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
@@ -215,24 +215,55 @@
 
     *{box-sizing:border-box}
     body{margin:0;background:#edeae4;color:#002927;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    .review-shell{max-width:1280px;margin:0 auto;padding:22px}
-    .review-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:14px}
+    button{font:inherit}
+    .review-shell{max-width:1500px;margin:0 auto;padding:22px}
+    .review-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:18px}
     .review-kicker{font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#a44e25}
-    .review-head h1{font-size:25px;line-height:1.15;letter-spacing:-.025em;margin:6px 0 5px}
-    .review-head p{font-size:13px;line-height:1.5;color:#566866;margin:0;max-width:720px}
-    .review-state{flex:none;min-width:212px;border:1px solid #c9c5bd;background:#fff;padding:10px 12px;font:700 12px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace}
-    .review-state span{display:block;color:#526360;font-weight:500;margin-top:2px}
+    .review-head h1{font-size:27px;line-height:1.15;letter-spacing:-.025em;margin:6px 0 5px}
+    .review-head p{font-size:13px;line-height:1.5;color:#566866;margin:0;max-width:790px}
+    .source-chip{flex:none;border:1px solid #c9c5bd;background:#fff;padding:10px 12px;font:700 11px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;color:#244340}
+    .source-chip span{display:block;color:#667572;font-weight:500}
+    .review-workspace{display:grid;grid-template-columns:370px minmax(0,1fr);gap:18px;align-items:start}
+    .controls{position:sticky;top:14px;background:#fff;border:1px solid #c9c5bd;box-shadow:0 10px 30px rgba(0,41,39,.08)}
+    .control-section{padding:18px}
+    .control-section+.control-section{border-top:1px solid #e2ded7}
+    .control-label{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7a5a42;margin-bottom:9px}
+    .control-section h2{font-size:17px;line-height:1.25;margin:0 0 6px}
+    .control-help{font-size:12px;line-height:1.45;color:#667572;margin:0}
+    .state-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px}
+    .state-button{border:1px solid #c9c5bd;background:#fff;color:#244340;padding:11px 10px;cursor:pointer;font-size:12px;font-weight:750;text-align:left}
+    .state-button span{display:block;font-size:10px;font-weight:500;color:#71807d;margin-top:3px}
+    .state-button.active{border-color:#002927;background:#002927;color:#fff}
+    .state-button.active span{color:rgba(255,255,255,.68)}
+    .rule-list{display:grid;gap:8px;margin-top:12px}
+    .rule{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:1px solid #dedbd5;background:#faf9f7;padding:11px}
+    .rule.active{border-color:#e1763d;box-shadow:inset 3px 0 0 #e1763d}
+    .rule-audience{font-size:11px;font-weight:800;color:#002927}
+    .rule-template{font-size:11px;color:#667572;margin-top:2px}
+    .rule-toggle{border:1px solid #8c9997;background:#fff;color:#304744;padding:6px 8px;cursor:pointer;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+    .rule-toggle[aria-pressed="true"]{border-color:#28634e;background:#e5f0ea;color:#245a48}
+    .rule-fixed{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#245a48}
+    .fallback-button{width:100%;margin-top:10px;border:1px solid #b5aea5;background:#fff;color:#553f30;padding:9px 10px;cursor:pointer;font-size:11px;font-weight:750}
+    .route-result{background:#002927;color:#fff;padding:15px 18px}
+    .route-result .control-label{color:#e9b08f;margin-bottom:5px}
+    .route-result strong{display:block;font-size:17px;line-height:1.25}
+    .route-result span{display:block;font-size:11px;line-height:1.45;color:rgba(255,255,255,.7);margin-top:4px}
+    .legend{font-size:11px;line-height:1.5;color:#687674;margin-top:10px}
+    .legend b{color:#2a4541}
     .browser{overflow:hidden;background:#fff;border:1px solid #c9c5bd;box-shadow:0 14px 38px rgba(0,41,39,.13)}
     .browser-bar{height:36px;border-bottom:1px solid #dedbd5;background:#f7f6f3;display:flex;align-items:center;gap:6px;padding:0 13px}
     .browser-dot{width:8px;height:8px;border-radius:50%;background:#c9c5bd}
     .browser-label{margin-left:8px;font-size:11px;color:#71807d}
+    [data-review-disabled="true"]{cursor:not-allowed!important}
     .store-topbar{height:62px;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid var(--line)}
     .store-topbar img{display:block;max-width:128px;max-height:38px}
     .store-note{padding:9px 16px;background:#fff8ed;border-bottom:1px solid #ead9bd;color:#745a31;font-size:12px;text-align:center}
-    #mount{background:var(--bg);min-height:600px;padding:0 16px 28px}
-    #mount>.imot-ffwrap,#mount>.imot-grid{max-width:1200px;margin:0 auto}
-    .proof-note{margin-top:11px;font-size:12px;color:#63716f;line-height:1.5}
-    @media(max-width:760px){.review-shell{padding:14px}.review-head{display:block}.review-state{margin-top:12px;width:100%}.browser{overflow-x:auto}.browser-inner{min-width:390px}}
+    #mount{background:var(--bg);min-height:600px;padding:0 16px 28px;overflow:hidden}
+    #mount>.imot-ffwrap{width:100%;margin:0}
+    #mount>.imot-grid{max-width:1200px;margin:0 auto}
+    .proof-note{margin:11px 0 0;font-size:11px;color:#63716f;line-height:1.5}
+    @media(max-width:980px){.review-workspace{grid-template-columns:1fr}.controls{position:static}.review-head{display:block}.source-chip{margin-top:12px}.state-tabs{grid-template-columns:1fr 1fr}}
+    @media(max-width:560px){.review-shell{padding:12px}.state-tabs{grid-template-columns:1fr}.browser{overflow-x:auto}.browser-inner{min-width:390px}}
   </style>
 </head>
 <body>
@@ -240,20 +271,61 @@
     <header class="review-head">
       <div>
         <div class="review-kicker">Review only · September 17, 2026</div>
-        <h1>Wayve Wear tracking page with a real video hero</h1>
-        <p>Real production merchandising configuration and a Wayve-owned Shopify video. Shipment and order fields below are clearly labeled sample values and contain no customer data.</p>
+        <h1>Customer-audience tracking page rules</h1>
+        <p>Simulate a first-time or returning customer, change whether that segment has a published template, and watch the rendered Wayve Wear tracking page resolve to the matching experience.</p>
       </div>
-      <div class="review-state" id="video-state">Loading video…<span id="video-time">Waiting for media</span></div>
+      <div class="source-chip">WAYVE WEAR · LIVE CONFIG<span>Production rows updated Sep 3, 2026 · observed Sep 17</span></div>
     </header>
-    <section class="browser" aria-label="Wayve Wear tracking-page preview">
-      <div class="browser-bar"><i class="browser-dot"></i><i class="browser-dot"></i><i class="browser-dot"></i><span class="browser-label">No live order · review preview</span></div>
-      <div class="browser-inner">
-        <div class="store-topbar"><img src="https://wayvewear.com/cdn/shop/files/Wayve_logos_-_5_19e9e507-b4fd-4e8f-a3fd-65d3e59d52c4.png?v=1740002259" alt="Wayve Wear"></div>
-        <div class="store-note">Sample shipment state · no customer name, address, email, tracking number, or real order ID</div>
-        <div id="mount"></div>
+    <div class="review-workspace">
+      <aside class="controls" aria-label="Audience rule configuration">
+        <section class="control-section">
+          <div class="control-label">1 · Simulate customer state</div>
+          <h2>Who is viewing this order?</h2>
+          <p class="control-help">This changes the audience value passed into the PR #85 resolver.</p>
+          <div class="state-tabs">
+            <button class="state-button active" type="button" data-state="first_time" data-testid="audience-first_time">First-time customer<span>New customer · 1 order</span></button>
+            <button class="state-button" type="button" data-state="repeat" data-testid="audience-repeat">Returning customer<span>Existing customer · 2+ orders</span></button>
+          </div>
+        </section>
+        <section class="control-section">
+          <div class="control-label">2 · Configurable publish rule</div>
+          <h2>Published template by audience</h2>
+          <p class="control-help">These are the three stored audience slots exposed by portal PR #491. Toggle a slot here to simulate its published or empty state.</p>
+          <div class="rule-list">
+            <div class="rule" data-rule="all">
+              <div><div class="rule-audience">All customers</div><div class="rule-template">Main Layout · actual stored baseline</div></div>
+              <span class="rule-fixed">Published</span>
+            </div>
+            <div class="rule active" data-rule="first_time">
+              <div><div class="rule-audience">First-time customers</div><div class="rule-template">New customer welcome · review variant</div></div>
+              <button class="rule-toggle" type="button" data-publish="first_time" data-testid="rule-first_time" aria-pressed="true">Published</button>
+            </div>
+            <div class="rule" data-rule="repeat">
+              <div><div class="rule-audience">Returning customers</div><div class="rule-template">Returning customer thank-you · review variant</div></div>
+              <button class="rule-toggle" type="button" data-publish="repeat" data-testid="rule-repeat" aria-pressed="true">Published</button>
+            </div>
+          </div>
+          <button class="fallback-button" type="button" id="try-fallback" data-testid="try-fallback">Simulate this segment as not published</button>
+          <p class="legend"><b>Review-only variants:</b> both segment templates reuse the live Wayve layout, theme, assets, product catalog, and current TRACK10 offer. Only the audience-specific headline and message differ.</p>
+        </section>
+        <section class="route-result" aria-live="polite">
+          <div class="control-label">Resolved experience</div>
+          <strong id="resolved-template" data-testid="resolved-template">New customer welcome</strong>
+          <span id="resolution-reason">First-time customer → first-time template</span>
+        </section>
+      </aside>
+      <div>
+        <section class="browser" aria-label="Rendered Wayve Wear tracking-page preview">
+          <div class="browser-bar"><i class="browser-dot"></i><i class="browser-dot"></i><i class="browser-dot"></i><span class="browser-label" id="browser-label">First-time customer · New customer welcome</span></div>
+          <div class="browser-inner">
+            <div class="store-topbar"><img src="https://wayvewear.com/cdn/shop/files/Wayve_logos_-_5_19e9e507-b4fd-4e8f-a3fd-65d3e59d52c4.png?v=1740002259" alt="Wayve Wear"></div>
+            <div class="store-note">Real Wayve merchandising · sample shipment state · no customer/order PII · store CTAs disabled</div>
+            <div id="mount" data-testid="rendered-tracking-page"></div>
+          </div>
+        </section>
+        <p class="proof-note">The page on the right is rendered by IronTrack’s shared storefront renderer. Product, brand, layout, and offer data come from Wayve Wear’s production configuration; shipment fields are sample values.</p>
       </div>
-    </section>
-    <p class="proof-note">Use the visible Pause/Play and Unmute/Mute buttons on the hero. The status above reads the live media element, including its current playback time and sound state.</p>
+    </div>
   </main>
   <script>
 (function(){
@@ -558,6 +630,7 @@
   // Scale the canvas to the available width (never up past 1:1) and centre it.
   // Re-fits on resize; crossing the 720px breakpoint needs a re-render to swap
   // device arrangements, which the host page does on navigation.
+  var imotResizeFit=null;
   function imotFitFreeform(scope){
     var wrap=scope.querySelector(".imot-ffwrap");if(!wrap)return;
     var ff=wrap.querySelector(".imot-ff");if(!ff)return;
@@ -572,7 +645,11 @@
       wrap.style.height=(H*sc)+"px";
     }
     fit();
-    if(!wrap._imotFit){wrap._imotFit=1;try{window.addEventListener("resize",fit);}catch(e){}}
+    try{
+      if(imotResizeFit)window.removeEventListener("resize",imotResizeFit);
+      imotResizeFit=fit;
+      window.addEventListener("resize",imotResizeFit);
+    }catch(e){}
   }
 
   var TILES={hero:heroHtml,summary:summaryHtml,stepper:stepperHtml,timeline:timelineHtml,items:itemsHtml,promo:promoHtml,crosssell:crossSellHtml,editorial:editorialHtml,notify:notifyHtml};
@@ -830,26 +907,107 @@
 })();
 </script>
   <script>
+    var WAYVE_BASE;
+    var renderTrackingPage = IMOT.render;
+    IMOT.render = function(data,mount,options){
+      WAYVE_BASE=JSON.parse(JSON.stringify(data));
+      // The audience review uses Wayve's actual September 3 image-hero config.
+      // The video URL belonged only to the earlier PR #84 review artifact.
+      if(WAYVE_BASE.hero)delete WAYVE_BASE.hero.video_url;
+      return renderTrackingPage(WAYVE_BASE,mount,options);
+    };
     IMOT.render({"found":true,"order":"Preview order","status":"In transit","status_code":"IT","detail":"Sample shipment status for layout review","carrier":"Sample carrier","estimated_delivery":"2026-09-22","events":[{"at":"2026-09-17T18:30:00Z","description":"Sample package update","city":"","state":"","status":"IN_TRANSIT"}],"items":[{"title":"Sample order item","variant":"Preview only","qty":1,"price":null,"image":"https://cdn.shopify.com/s/files/1/0835/2877/8012/files/23.jpg?v=1765860480"}],"theme":{"accent":"#e1763d","accent_soft":"rgba(225,118,61,0.1)","bg":"#f4f4f5","bg_image":"none","panel":"#FFFFFF","ink":"#002927","muted":"#767a80","line":"#e9eaec","radius":0},"font":{"heading":"\"Inter\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif","body":"\"Inter\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif","links":["https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"],"face_css":""},"layout":{"desktop":[{"key":"hero","enabled":true,"x":0,"y":0,"w":12,"h":6},{"key":"summary","enabled":true,"x":0,"y":6,"w":12,"h":4},{"key":"stepper","enabled":true,"x":0,"y":10,"w":12,"h":3},{"key":"timeline","enabled":true,"x":0,"y":13,"w":12,"h":6},{"key":"items","enabled":true,"x":0,"y":19,"w":12,"h":5},{"key":"promo","enabled":true,"x":0,"y":24,"w":12,"h":4},{"key":"crosssell","enabled":true,"x":0,"y":28,"w":12,"h":6},{"key":"editorial","enabled":true,"x":0,"y":34,"w":12,"h":4},{"key":"notify","enabled":true,"x":0,"y":38,"w":12,"h":3}],"mobile":[{"key":"hero","enabled":true,"x":0,"y":0,"w":12,"h":6},{"key":"summary","enabled":true,"x":0,"y":6,"w":12,"h":4},{"key":"stepper","enabled":true,"x":0,"y":10,"w":12,"h":3},{"key":"timeline","enabled":true,"x":0,"y":13,"w":12,"h":6},{"key":"items","enabled":true,"x":0,"y":19,"w":12,"h":5},{"key":"promo","enabled":true,"x":0,"y":24,"w":12,"h":4},{"key":"crosssell","enabled":true,"x":0,"y":28,"w":12,"h":6},{"key":"editorial","enabled":true,"x":0,"y":34,"w":12,"h":4},{"key":"notify","enabled":true,"x":0,"y":38,"w":12,"h":3}]},"boxes":{"desktop":{"hero":{"x":0,"y":0,"w":1200,"h":340},"items":{"x":0,"y":668,"w":584,"h":192},"promo":{"x":608,"y":668,"w":592,"h":192},"notify":{"x":0,"y":1252,"w":1200,"h":120},"stepper":{"x":0,"y":540,"w":1200,"h":112},"summary":{"x":0,"y":356,"w":584,"h":168},"timeline":{"x":608,"y":356,"w":592,"h":168},"crosssell":{"x":0,"y":876,"w":1200,"h":360}},"mobile":{"hero":{"x":0,"y":0,"w":390,"h":270},"items":{"x":0,"y":852,"w":390,"h":188},"promo":{"x":0,"y":1054,"w":390,"h":176},"notify":{"x":0,"y":1608,"w":390,"h":120},"stepper":{"x":0,"y":548,"w":390,"h":109},"summary":{"x":0,"y":284,"w":390,"h":250},"timeline":{"x":0,"y":671,"w":390,"h":167},"crosssell":{"x":0,"y":1244,"w":390,"h":350}}},"hero":{"headline":"Your order is on its way!","image_url":"https://cdn.shopify.com/s/files/1/0835/2877/8012/files/Untitled_design_2.png?v=1786120974","video_url":"https://cdn.shopify.com/videos/c/vp/af50022f0b064f4ca032e4b0b88633b1/af50022f0b064f4ca032e4b0b88633b1.HD-1080p-7.2Mbps-37461886.mp4"},"promo":{"enabled":true,"id":"track10-default","eyebrow":"","headline":"Take 10% off your next order","discount_code":"TRACK10","cta_label":"Apply 10% off","cta_url":"https://wayvewear.com/discount/TRACK10","image_url":null,"countdown_enabled":false,"countdown_ends_at":null,"days_valid":0,"percent":10,"checkout_message":"","discount_gid":null},"cross_sell":[{"title":"Bird Tracks Cotton Hat","price":39,"url":"/products/bird-tracks-cotton-hat","image":"https://cdn.shopify.com/s/files/1/0835/2877/8012/files/23.jpg?v=1765860480","compare_at_price":null,"variant_id":"53534914806044"},{"title":"Classic Short: Organic Cotton Short","price":55,"url":"/products/classic-short-organic-cotton-short","image":"https://cdn.shopify.com/s/files/1/0835/2877/8012/files/Walnut_Classic_Short_dbe00577-611a-4619-8cd9-e6d5d5ae655e.png?v=1781227076","compare_at_price":null,"variant_id":"47018111729948"},{"title":"Only Tee: Organic Cotton Tee","price":45,"url":"/products/only-tee-organic-cotton-tee","image":"https://cdn.shopify.com/s/files/1/0835/2877/8012/files/Vintage_Black_Only_Tee.png?v=1778122266","compare_at_price":null,"variant_id":"47387703476508"}],"editorial":[],"notify":{"enabled":true,"headline":"Stay in the loop","cta_label":"Join the newsletter","cta_url":"https://wayvewear.com/pages/subscribe","image_url":null}},document.getElementById("mount"),{brandRoot:document.documentElement,onImpression:function(){},onClick:function(){},onNotify:function(){}});
     (function(){
-      var video=document.querySelector(".hero-video"),state=document.getElementById("video-state"),time=document.getElementById("video-time");
-      if(!video){state.textContent="Video unavailable";time.textContent="No video element rendered";return;}
-      var mediaError=false;
-      function update(){
-        if(mediaError)return;
-        var playing=!video.paused&&!video.ended;
-        state.firstChild.nodeValue=(playing?"Playing":"Paused")+" · "+(video.muted?"Muted":"Sound on");
-        time.textContent="Live media time "+video.currentTime.toFixed(1)+"s of "+(Number.isFinite(video.duration)?video.duration.toFixed(1)+"s":"…");
+      IMOT.render=renderTrackingPage;
+      var mount=document.getElementById("mount");
+      var templates={
+        all:{name:"Main Layout",data:WAYVE_BASE},
+        first_time:{name:"New customer welcome",data:variant("first_time")},
+        repeat:{name:"Returning customer thank-you",data:variant("repeat")}
+      };
+      var params=new URLSearchParams(location.search);
+      var state=params.get("state")==="repeat"?"repeat":"first_time";
+      var published={
+        first_time:params.get("first_time")!=="off",
+        repeat:params.get("repeat")!=="off"
+      };
+
+      function clone(value){return JSON.parse(JSON.stringify(value));}
+      function variant(audience){
+        var data=clone(WAYVE_BASE);
+        if(audience==="first_time"){
+          data.hero.headline="Welcome to Wayve";
+          data.promo.eyebrow="New customer";
+          data.promo.headline="Take 10% off your next order";
+          data.notify.headline="Stay close to Wayve";
+        }else{
+          data.hero.headline="Good to see you again";
+          data.promo.eyebrow="Returning customer";
+          data.promo.headline="A thank-you for coming back";
+          data.notify.headline="Keep up with what is next";
+        }
+        return data;
       }
-      video.addEventListener("play",update);video.addEventListener("pause",update);video.addEventListener("volumechange",update);video.addEventListener("timeupdate",update);video.addEventListener("loadedmetadata",update);video.addEventListener("error",function(){mediaError=true;state.firstChild.nodeValue="Video error";time.textContent="The Shopify asset could not load";});
-      setInterval(update,250);update();
-      if(new URLSearchParams(location.search).get("proof")==="controls"){
-        var play=document.querySelector(".hero-video-play"),sound=document.querySelector(".hero-video-sound");
-        setTimeout(function(){if(video.muted&&sound)sound.click();},1200);
-        setTimeout(function(){if(!video.paused&&play)play.click();},2700);
-        setTimeout(function(){if(!video.muted&&sound)sound.click();},3500);
-        setTimeout(function(){if(video.paused&&play)play.click();},3800);
+
+      function syncUrl(){
+        var next=new URL(location.href);
+        next.searchParams.set("state",state);
+        if(published.first_time)next.searchParams.delete("first_time");else next.searchParams.set("first_time","off");
+        if(published.repeat)next.searchParams.delete("repeat");else next.searchParams.set("repeat","off");
+        history.replaceState(null,"",next);
       }
+
+      function render(){
+        var resolved=published[state]?state:"all";
+        var customerLabel=state==="first_time"?"First-time customer":"Returning customer";
+        var result=templates[resolved];
+        renderTrackingPage(clone(result.data),mount,{brandRoot:document.documentElement,onImpression:function(){},onClick:function(){},onNotify:function(){}});
+        mount.querySelectorAll(".shop-cta,.xsell,.atc,.code,.news-cta").forEach(function(control){
+          control.setAttribute("data-review-disabled","true");
+          control.setAttribute("aria-disabled","true");
+          control.setAttribute("title","Store action disabled in this review preview");
+        });
+        document.querySelectorAll("[data-state]").forEach(function(button){button.classList.toggle("active",button.getAttribute("data-state")===state);});
+        document.querySelectorAll("[data-rule]").forEach(function(row){row.classList.toggle("active",row.getAttribute("data-rule")===(published[state]?state:"all"));});
+        document.querySelectorAll("[data-publish]").forEach(function(button){
+          var audience=button.getAttribute("data-publish"),isPublished=published[audience];
+          button.setAttribute("aria-pressed",isPublished?"true":"false");
+          button.textContent=isPublished?"Published":"Not published";
+        });
+        document.getElementById("resolved-template").textContent=result.name+(resolved==="all"?" (fallback)":"");
+        document.getElementById("resolution-reason").textContent=published[state]
+          ?customerLabel+" → "+(state==="first_time"?"first-time":"returning")+" template"
+          :customerLabel+" → no segment page → all-customers fallback";
+        document.getElementById("browser-label").textContent=customerLabel+" · "+result.name+(resolved==="all"?" · fallback":"");
+        document.getElementById("try-fallback").textContent=published[state]
+          ?"Simulate this segment as not published"
+          :"Restore this segment template";
+        document.documentElement.setAttribute("data-customer-state",state);
+        document.documentElement.setAttribute("data-resolved-audience",resolved);
+        syncUrl();
+      }
+
+      document.querySelectorAll("[data-state]").forEach(function(button){
+        button.addEventListener("click",function(){state=button.getAttribute("data-state");render();});
+      });
+      document.querySelectorAll("[data-publish]").forEach(function(button){
+        button.addEventListener("click",function(){var audience=button.getAttribute("data-publish");published[audience]=!published[audience];render();});
+      });
+      document.getElementById("try-fallback").addEventListener("click",function(){published[state]=!published[state];render();});
+      mount.addEventListener("click",function(event){
+        var control=event.target.closest(".shop-cta,.xsell,.atc,.code,.news-cta");
+        if(!control)return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      },true);
+      var mobileLayout=window.innerWidth<720;
+      window.addEventListener("resize",function(){
+        var nextMobile=window.innerWidth<720;
+        if(nextMobile===mobileLayout)return;
+        mobileLayout=nextMobile;
+        window.requestAnimationFrame(render);
+      });
+      render();
     })();
   </script>
 </body>
