@@ -1,8 +1,848 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>IronTrack review preview</title><style>
-*{box-sizing:border-box}body{margin:0;background:#f5f7f8;color:#172126;font:15px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.bar{background:#132a30;color:#fff;padding:14px 24px;font-size:14px}.bar strong{font-weight:650}.wrap{max-width:1160px;margin:32px auto;padding:0 20px}.notice{background:#e4eff0;border:1px solid #bdd3d5;border-radius:10px;padding:12px 14px;color:#284a4f;font-size:13px}.tabs{display:flex;gap:8px;margin:22px 0}.tab,button,select,input{font:inherit}.tab,button{border:1px solid #c8d1d3;background:#fff;border-radius:8px;padding:9px 13px;cursor:pointer}.tab.active,button.primary{background:#163a40;border-color:#163a40;color:#fff}.screen{display:none}.screen.active{display:block}.grid{display:grid;grid-template-columns:390px 1fr;gap:24px}.panel,.phone{background:#fff;border:1px solid #dbe2e3;border-radius:13px;box-shadow:0 4px 18px #14262b0b}.panel{padding:22px}.field{margin:18px 0}.field label{display:block;font-weight:650;margin-bottom:7px}.help{font-size:12px;color:#607075;margin-top:7px;line-height:1.4}input,select{width:100%;padding:10px;border:1px solid #bfcacc;border-radius:7px;background:#fff}.phone{overflow:hidden;min-height:590px;background:#fbfbfb}.hero{height:280px;position:relative;display:flex;align-items:end;padding:26px;color:#fff;background:linear-gradient(135deg,#406c74,#9bb8b7 40%,#c4a37f);overflow:hidden}.hero:before{content:"";position:absolute;inset:-30%;background:radial-gradient(ellipse at 70% 45%,#ffffff88 0 4%,transparent 5% 15%,#d1e6e040 16% 27%,transparent 28%);animation:drift 8s linear infinite}.hero.video:after{content:"▶  Video hero (muted, looping)";position:absolute;top:14px;left:14px;background:#0d2024bd;border-radius:20px;padding:6px 10px;font-size:12px}.hero h1{z-index:1;margin:0;font-size:30px;line-height:1.04;max-width:410px;text-shadow:0 2px 14px #0008}@keyframes drift{to{transform:translateX(-10%)}}.order{padding:24px}.pill{display:inline-block;background:#e3f1ec;color:#216443;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:650}.order h2{font-size:18px;margin:14px 0 7px}.line{height:10px;border-radius:5px;background:#e5eaeb;margin:10px 0}.line.w{width:55%}.audiences{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.aud{border:1px solid #d3dddf;border-radius:9px;padding:12px;cursor:pointer;background:#fff}.aud.active{border:2px solid #207582;background:#edf9fa}.aud b{display:block;font-size:13px}.aud span{display:block;color:#667579;font-size:12px;margin-top:4px}.route{margin-top:18px;border-radius:9px;padding:14px;background:#f1f5f5;color:#294348;font-size:13px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.card{background:#fff;border:1px solid #dbe2e3;border-radius:10px;padding:16px}.badge{font-size:12px;background:#d9efdf;color:#23673b;border-radius:12px;padding:4px 7px;display:inline-block;margin-top:8px}@media(max-width:760px){.grid{grid-template-columns:1fr}.audiences,.cards{grid-template-columns:1fr}.wrap{margin-top:20px}}
-</style></head><body><div class="bar"><strong>IronTrack feature review</strong> · isolated preview from order-tracking-app PRs #84 and #85, with portal PR #491’s builder fields</div><main class="wrap"><div class="notice">Synthetic preview only. It contains no merchant or order data and does not publish or modify any tracking page.</div><div class="tabs"><button class="tab active" data-screen="video">Video hero</button><button class="tab" data-screen="audience">Customer audiences</button></div><section class="screen active" id="video"><div class="grid"><div class="panel"><h2>Hero media</h2><div class="field"><label for="image">Hero image</label><input id="image" value="https://…/brand-poster.jpg"><div class="help">Used as the fallback and poster when a video is set.</div></div><div class="field"><label for="video-url">Hero video URL</label><input id="video-url" placeholder="https://…/brand-video.mp4"><div class="help">Use a direct MP4 or WebM URL. It plays muted and loops; leave blank to show the image.</div></div><div class="field"><label for="headline">Headline</label><input id="headline" value="Your order is on its way"></div><button class="primary" id="apply-video">Update preview</button></div><div class="phone"><div class="hero" id="hero"><h1 id="hero-title">Your order is on its way</h1></div><div class="order"><span class="pill">In transit</span><h2>Order status</h2><div class="line"></div><div class="line w"></div><p class="help">Enter any sample MP4/WebM URL to see the video treatment switch on. The configured image remains the poster and fallback.</p></div></div></div></section><section class="screen" id="audience"><div class="panel"><h2>Publish a tracking-page layout</h2><p class="help">Choose a customer audience, then select a layout. This models the builder controls introduced in both the Shopify app and portal companion.</p><div class="audiences"><button class="aud active" data-aud="all"><b>All customers</b><span>Baseline page</span></button><button class="aud" data-aud="first_time"><b>First-time customers</b><span>1 prior order</span></button><button class="aud" data-aud="repeat"><b>Returning customers</b><span>2+ orders</span></button></div><div class="cards"><div class="card"><b>Standard tracking</b><br><span class="badge" id="all-badge">Live: All customers</span></div><div class="card"><b>Welcome layout</b><br><span class="badge" id="first-badge">Draft</span></div><div class="card"><b>VIP layout</b><br><span class="badge" id="repeat-badge">Draft</span></div></div><div class="route" id="route">All customers are routed to <b>Standard tracking</b>.</div><button class="primary" id="publish">Publish selected layout</button><p class="help">If no layout is published for first-time or returning customers, their tracking page falls back to the all-customers layout. Customer history is read from Shopify and is not persisted in the tracking cache.</p></div></section></main><script>
-const tabs=document.querySelectorAll('.tab'),screens=document.querySelectorAll('.screen');function show(screen){tabs.forEach(x=>x.classList.toggle('active',x.dataset.screen===screen));screens.forEach(x=>x.classList.toggle('active',x.id===screen))}tabs.forEach(t=>t.onclick=()=>show(t.dataset.screen));show(new URLSearchParams(location.search).get('feature')==='audience'?'audience':'video');
-document.getElementById('apply-video').onclick=()=>{const has=!!document.getElementById('video-url').value.trim(),title=document.getElementById('headline').value.trim();document.getElementById('hero').classList.toggle('video',has);document.getElementById('hero-title').textContent=title};
-let chosen='all';const label={all:'All customers',first_time:'First-time customers',repeat:'Returning customers'},layout={all:'Standard tracking',first_time:'Welcome layout',repeat:'VIP layout'};document.querySelectorAll('.aud').forEach(b=>b.onclick=()=>{document.querySelectorAll('.aud').forEach(x=>x.classList.remove('active'));b.classList.add('active');chosen=b.dataset.aud;document.getElementById('route').innerHTML=`${label[chosen]} will receive <b>${layout[chosen]}</b> when published; otherwise they fall back to <b>Standard tracking</b>.`});document.getElementById('publish').onclick=()=>{document.getElementById(chosen==='all'?'all-badge':chosen==='first_time'?'first-badge':'repeat-badge').textContent='Live: '+label[chosen];document.getElementById('route').innerHTML=`${label[chosen]} are routed to <b>${layout[chosen]}</b>.`};
-</script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Wayve Wear · IronTrack hero-video review</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <style>
+    :root{--bg:#f4f4f5;--bg-image:none;--panel:#FFFFFF;--ink:#002927;--muted:#767a80;--line:#e9eaec;--accent:#e1763d;--accent-soft:rgba(225,118,61,0.1);--radius:0px;--font-head:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+
+  *{box-sizing:border-box}
+  body{margin:0;background-color:var(--bg);background-image:var(--bg-image,none);background-size:cover;background-position:center;background-repeat:no-repeat;background-attachment:fixed;color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;line-height:1.5}
+  .wrap{width:100%;max-width:720px;margin:0 auto;padding:0 16px 28px;flex:1}
+  h1,h2,h3,.h-txt,.status,.eta .day,.offer .ttl{font-family:var(--font-head)}
+  .topbar{background:var(--panel);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:30px;padding:18px 20px}
+  .topbar img{height:26px;width:auto}
+  .topbar .wordmark{font-weight:700;letter-spacing:.16em;font-size:14px;text-transform:uppercase;color:var(--ink)}
+  .topbar nav{display:flex;gap:22px}
+  .topbar nav a{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);text-decoration:none;opacity:.72}
+  .topbar nav a:hover{opacity:1;color:var(--accent)}
+  @media(max-width:600px){.topbar{gap:0}.topbar nav{display:none}}
+  .footer{background:var(--ink);color:rgba(255,255,255,.72);margin-top:auto;padding:32px 22px 38px;text-align:center}
+  .footer .flinks{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+  .footer a{color:rgba(255,255,255,.85);text-decoration:none;font-size:12.5px;font-weight:600;letter-spacing:.03em}
+  .footer a:hover{color:#fff}
+  .footer .fine{font-size:11.5px;color:rgba(255,255,255,.5);line-height:1.6;letter-spacing:.04em;text-transform:uppercase}
+  .lookup-wrap{display:flex;align-items:center;justify-content:center;padding:56px 16px;min-height:58vh}
+  .lookup{width:100%;max-width:460px;border:1px solid var(--line);background:var(--panel);border-radius:var(--radius);padding:32px 28px;box-shadow:0 12px 34px rgba(0,0,0,.06);text-align:center}
+  .lookup h1{font-size:24px;margin:0 0 6px;letter-spacing:-.01em}
+  .lookup .sub{color:var(--muted);font-size:14px;margin:0 0 20px;line-height:1.5}
+  form.lookup-form{display:flex;gap:10px;flex-wrap:wrap;text-align:left}
+  @media(max-width:460px){form.lookup-form .fld{flex:1 1 100%}.btn-row{flex:1 1 100%}.btn-row button{width:100%}}
+  form.lookup-form .fld{flex:1;min-width:130px}
+  label{display:block;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+  input{font:inherit;font-size:15px;padding:12px 14px;border:1px solid var(--line);border-radius:calc(var(--radius) * .5);background:var(--panel);color:var(--ink);width:100%}
+  input:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+  button.primary{font:inherit;font-weight:700;font-size:15px;padding:12px 20px;border:0;border-radius:calc(var(--radius) * .5);background:var(--accent);color:#fff;cursor:pointer;transition:opacity .15s}
+  button.primary:hover{opacity:.9}
+  button.primary:disabled{opacity:.55;cursor:default}
+  .btn-row{display:flex;align-items:flex-end}
+  .err{color:var(--accent);font-size:13.5px;margin-top:10px;min-height:16px}
+  .loading{color:var(--muted);font-size:14px;padding:8px 22px 22px;text-align:center}
+  .hero{position:relative;height:340px;background-size:cover;background-position:center;background-color:var(--accent-soft);display:flex;align-items:flex-end}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.56) 0%,rgba(0,0,0,.16) 40%,rgba(0,0,0,0) 70%)}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero-video-controls{position:absolute;z-index:3;top:16px;right:16px;display:flex;gap:8px}
+  .hero-video-control{appearance:none;border:1px solid rgba(255,255,255,.58);border-radius:999px;background:rgba(0,20,19,.78);color:#fff;cursor:pointer;font:700 12px/1 var(--font-body);letter-spacing:.01em;padding:10px 13px;min-width:70px;box-shadow:0 3px 12px rgba(0,0,0,.22);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .hero-video-control:hover{background:rgba(0,20,19,.92)}
+  .hero-video-control:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  /* Headline-less hero: the banner art is the content, so no scrim over it. */
+  .hero-bare::after{display:none}
+  .hero .h-txt{position:relative;z-index:1;color:#fff;padding:30px 28px;font-size:clamp(26px,4.4vw,36px);line-height:1.1;letter-spacing:-.01em;font-weight:600;max-width:92%;text-shadow:0 1px 18px rgba(0,0,0,.4)}
+  @media(max-width:560px){.hero{height:262px}.hero .h-txt{padding:22px}.hero-video-controls{top:12px;right:12px}.hero-video-control{padding:9px 11px;min-width:64px}}
+  .summary{display:flex;gap:22px;align-items:center;padding:26px 24px;flex-wrap:wrap}
+  .eta{flex:0 0 auto;text-align:center;padding-right:22px;border-right:1px solid var(--line)}
+  @media(max-width:460px){.eta{border-right:0;padding-right:0;text-align:left}}
+  .eta .lbl{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  .eta .dow{font-size:14px;font-weight:600;margin-top:5px;color:var(--ink)}
+  .eta .day{font-size:56px;font-weight:800;line-height:.9;letter-spacing:-.03em;color:var(--ink);margin-top:2px}
+  .eta .mon{font-size:14px;color:var(--muted);font-weight:600}
+  .sum-right{flex:1;min-width:200px}
+  .sum-right .status{font-size:22px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+  .sum-right .detail{color:var(--muted);font-size:14px;margin-top:5px;line-height:1.45}
+  .sum-right .ord{color:var(--muted);font-size:12.5px;margin-top:11px;font-variant-numeric:tabular-nums;letter-spacing:.03em;text-transform:uppercase;font-weight:600}
+  .track-no{font-size:12.5px;color:var(--muted);margin-top:9px;letter-spacing:.01em}
+  .track-no a{color:var(--muted);text-decoration:underline;text-underline-offset:2px;font-variant-numeric:tabular-nums}
+  .track-no a:hover{color:var(--accent)}
+  .track-no span{color:var(--ink);font-variant-numeric:tabular-nums}
+  .steps{display:flex;justify-content:space-between;margin:22px 26px;position:relative}
+  .steps:before{content:"";position:absolute;top:12px;left:7%;right:7%;height:2px;background:var(--line)}
+  .steps .fill{position:absolute;top:12px;left:7%;height:2px;background:var(--accent);transition:width .5s ease}
+  .step{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;text-align:center}
+  .step .dot{width:26px;height:26px;border-radius:50%;background:var(--panel);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;color:transparent;transition:.2s}
+  .step.done .dot{background:var(--accent);border-color:var(--accent);color:#fff}
+  .step.current .dot{border-color:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
+  .step .lbl{font-size:11px;color:var(--muted);font-weight:600;max-width:80px;line-height:1.3}
+  .step.done .lbl,.step.current .lbl{color:var(--ink)}
+  .step.exception .dot{background:#d98b1f;border-color:#d98b1f;color:#fff}
+  .sec{padding:24px}
+  .sec+.sec{border-top:1px solid var(--line)}
+  .sec h3{font-size:11.5px;margin:0 0 16px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:var(--font-body);font-weight:700}
+  .tl{position:relative;margin:2px 0 0;padding:0}
+  .tl .tl-row{position:relative;display:flex;gap:16px;padding:0 0 22px 4px}
+  .tl .tl-row:last-child{padding-bottom:2px}
+  .tl .tl-mark{position:relative;flex:0 0 auto;width:16px;display:flex;justify-content:center}
+  .tl .tl-mark::before{content:"";position:absolute;top:16px;bottom:-6px;width:2px;background:var(--line)}
+  .tl .tl-row:last-child .tl-mark::before{display:none}
+  .tl .tl-dot{width:12px;height:12px;border-radius:50%;background:var(--panel);border:2px solid var(--line);margin-top:4px;z-index:1}
+  .tl .tl-row.head .tl-dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+  .tl .tl-body{flex:1;min-width:0;padding-bottom:2px}
+  .tl .tl-what{font-size:14px;line-height:1.35;color:var(--muted)}
+  .tl .tl-row.head .tl-what{font-weight:700;color:var(--ink)}
+  .tl .tl-where{color:var(--muted);font-size:12.5px;margin-top:2px}
+  .tl .tl-when{color:var(--muted);font-size:12px;margin-top:3px;font-variant-numeric:tabular-nums;opacity:.85}
+  .item{display:flex;gap:15px;align-items:center;padding:13px 0}
+  .item+.item{border-top:1px solid var(--line)}
+  .item img,.item .ph{width:60px;height:60px;object-fit:cover;border-radius:calc(var(--radius) * .55);background:var(--bg);flex:0 0 auto;border:1px solid var(--line)}
+  .item .t{font-size:14.5px;font-weight:600;color:var(--ink)}
+  .item .m{font-size:12.5px;color:var(--muted);margin-top:3px}
+  .item .p{margin-left:auto;font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .offer{background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 78%,#fff));color:#fff;padding:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .offer .eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+  .offer .ttl{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-top:5px}
+  .offer .sm{font-size:13px;opacity:.94;margin-top:6px}
+  .offer .sm a{color:#fff}
+  .offer .cta-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px}
+  .offer .cta-row .code{margin:0}
+  .offer .shop-cta{display:inline-block;background:#fff;color:var(--accent);font-weight:800;font-size:15px;letter-spacing:.01em;padding:13px 26px;border-radius:calc(var(--radius) * .5);text-decoration:none;transition:opacity .15s,transform .12s}
+  .offer .shop-cta:hover{opacity:.92}
+  .offer .shop-cta:active{transform:translateY(1px)}
+  .offer .cta-note{font-size:11.5px;opacity:.9;margin-top:9px}
+  .offer .code{background:rgba(255,255,255,.16);border:1px dashed rgba(255,255,255,.6);border-radius:8px;padding:10px 15px;font-weight:800;letter-spacing:.1em;white-space:nowrap;font-size:15px;color:#fff;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;transition:background .12s,transform .12s}
+  .offer .code:hover{background:rgba(255,255,255,.28)}
+  .offer .code:active{transform:translateY(1px)}
+  .offer .code.copied{background:#fff;color:var(--accent);border-style:solid}
+  .offer .cd{display:flex;gap:6px;margin-top:12px}
+  .offer .cd span{background:rgba(0,0,0,.18);border-radius:7px;padding:6px 9px;font-weight:800;font-size:14px;font-variant-numeric:tabular-nums;min-width:40px;text-align:center;line-height:1}
+  .offer .cd span small{display:block;font-size:9px;font-weight:600;opacity:.8;letter-spacing:.04em;margin-top:3px}
+  /* Products fill the tile they're in, whatever its width and however many
+     products — auto-fit stretches columns to fill and collapses empty tracks (no
+     left-crowding), driven by the TILE width, not the viewport. */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
+  .prod{border:1px solid var(--line);border-radius:calc(var(--radius) * .8);overflow:hidden;color:var(--ink);display:flex;flex-direction:column;background:var(--panel);transition:transform .12s,box-shadow .12s}
+  .prod:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+  .prod img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--bg)}
+  .prod .pt{font-size:12.5px;font-weight:600;padding:11px 11px 2px;line-height:1.3}
+  .prod .pp{font-size:12.5px;padding:0 11px 10px;font-variant-numeric:tabular-nums}
+  .prod .pp .was{color:var(--muted);text-decoration:line-through;margin-right:5px}
+  .prod .pp .now{font-weight:700}
+  .prod .atc{margin:auto 11px 11px;padding:9px 10px;border:1px solid var(--accent);background:var(--panel);color:var(--accent);border-radius:calc(var(--radius) * .5);font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;text-align:center;text-decoration:none;cursor:pointer;transition:.12s}
+  .prod .atc:hover{background:var(--accent);color:#fff}
+  /* Image tile: the merchant's artwork, shown as uploaded. No gradient scrim, no
+     headline overlay, no button — those greyed out and covered up finished
+     artwork. The child selector (not "a") because an unlinked image is a div. */
+  .edt{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .edt>*{position:relative;display:block;border-radius:calc(var(--radius) * .8);overflow:hidden;min-height:160px;text-decoration:none;background-size:cover;background-position:center;background-repeat:no-repeat}
+  .notify.news-banner{padding:32px 28px;border-radius:var(--radius);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .notify.news-banner .nb-title{font-family:var(--font-head);font-size:24px;font-weight:700;line-height:1.15;letter-spacing:-.01em;flex:1 1 220px}
+  .notify.news-banner .news-cta{margin-top:0;background:#fff;color:var(--accent)}
+  .notify .news-cta{display:inline-block;margin-top:4px;background:var(--accent);color:#fff;font-weight:700;font-size:14px;letter-spacing:.02em;padding:12px 26px;border-radius:calc(var(--radius) * .5);text-decoration:none;transition:opacity .15s,transform .12s}
+  .notify .news-cta:hover{opacity:.92}
+  .notify .news-cta:active{transform:translateY(1px)}
+  .hidden{display:none}
+  /* IM-232 responsive grid: mobile-first single-column stack (ordered by the
+     saved mobile layout); switches to the 12-col desktop grid above 720px. Each
+     tile is its own card. */
+  .imot-grid{display:flex;flex-direction:column;gap:16px;margin:24px 0}
+  .imot-cell{order:var(--mo,0);background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 30px rgba(0,0,0,.045);min-width:0}
+  .imot-m-off{display:none}
+  @media(min-width:720px){
+    /* Match Gymshark's constrained, readable order column. Wider than this (we
+       were at 1040) makes summary/timeline/item lines sprawl and read poorly. */
+    .wrap{max-width:760px}
+    .imot-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;align-items:start}
+    .imot-cell{order:0;grid-column:var(--dx,1)/span var(--dw,12);grid-row:var(--dr,1)}
+    /* Desktop only: a short stepper sharing a row with a taller tile centers
+       vertically. In the mobile flex-column this would shrink+center the card
+       (not fill width), so it is scoped here. */
+    .imot-cell:has(> .steps){align-self:center}
+    .imot-d-off{display:none}
+    .imot-m-off{display:block}
+  }
+  /* ---- Free-form canvas (V2 published layouts) ----------------------------
+     The merchant arranged tiles in PIXELS on a fixed canvas (1200 desktop / 390
+     mobile). We render that canvas at its design size and scale it to fit, so
+     the result is pixel-identical to what they built and merely zoomed — no
+     snapping back onto the grid, no reflow. Full-bleed out of the 760px column
+     so a 1200px canvas can render at or near 1:1 on a desktop.
+     The per-tile overrides mirror the builder's own preview (buildFreeformSrcDoc)
+     so the live page matches the preview the merchant designed against. */
+  .imot-ffwrap{position:relative;overflow:hidden;width:100vw;margin:24px 0 24px calc(50% - 50vw)}
+  .imot-ff{position:relative;transform-origin:top left}
+  .ffc{position:absolute;overflow:hidden}
+  .ffc>.imot-cell{height:100%;box-shadow:none;border:0}
+  .ffc>.imot-cell>*{min-height:100%}
+  .ffc .imot-grid{margin:0;height:100%}
+  /* Image tile in a free-form box: fill the box the merchant sized, exactly as
+     the builder preview does. The height chain must be DEFINITE all the way down
+     — min-height:100% here resolves against an auto-height .sec and collapses the
+     image to 0. Identical to TILE_OVERRIDE_CSS in builder-helpers.ts. */
+  .ffc-editorial .sec{padding:0;height:100%}
+  .ffc-editorial .edt{gap:0;height:100%;grid-auto-rows:1fr}
+  .ffc-editorial .edt>*{min-height:0;border-radius:0}
+  .ffc-crosssell .grid{display:flex;overflow-x:auto;gap:14px;padding-bottom:8px}
+  .ffc-crosssell .grid>*{flex:0 0 180px}
+  .ffc-timeline .tl{max-height:calc(100% - 44px);overflow:auto}
+  /* Section header with a right-aligned disclosure toggle (Gymshark "Show details"). */
+  .sec-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 16px}
+  .sec-head h3{margin:0}
+  .tl-toggle{display:inline-flex;align-items:center;gap:7px;background:none;border:0;padding:2px;margin:-2px;cursor:pointer;font:inherit;font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--ink);-webkit-appearance:none}
+  .tl-toggle:hover{color:var(--accent)}
+  .tl-caret{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid currentColor;transition:transform .18s;flex:0 0 auto}
+  .tl-toggle[aria-expanded="true"] .tl-caret{transform:rotate(180deg)}
+  .tl.collapsed .tl-rest{display:none}
+  .tl.collapsed .tl-row.head .tl-mark::before{display:none}
+  /* Items subtotal footer. */
+  .item-sub{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 0 2px;margin-top:5px;border-top:1px solid var(--line);font-size:13px;font-weight:700;color:var(--ink)}
+  .item-sub .s-amt{font-variant-numeric:tabular-nums}
+  /* Multi-package: tabbed "Package 1 of N" section shown above the grid when an
+     order ships in more than one box. One tab + one panel per shipment. */
+  .imot-pkgbar{margin:0 0 16px}
+  .pkgs{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+  .pkg-head{font-size:13px;font-weight:700;color:var(--muted);margin:0 0 14px}
+  .pkg-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 4px}
+  .pkg-tab{display:flex;flex-direction:column;align-items:flex-start;gap:2px;background:transparent;border:1px solid var(--line);border-radius:calc(var(--radius) * .55);padding:9px 15px;cursor:pointer;font:inherit;color:var(--muted);text-align:left;transition:border-color .15s,color .15s,background .15s}
+  .pkg-tab:hover{border-color:var(--accent);color:var(--ink)}
+  .pkg-tab.active{border-color:var(--accent);background:var(--accent-soft);color:var(--ink)}
+  .pkg-tab .pkg-n{font-size:13px;font-weight:700}
+  .pkg-tab .pkg-st{font-size:11px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;opacity:.85}
+  .pkg-panel.hidden{display:none}
+  .pkg-panel .summary{padding:6px 0 16px}
+  .pkg-panel .sec{margin-top:18px}
+
+    *{box-sizing:border-box}
+    body{margin:0;background:#edeae4;color:#002927;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .review-shell{max-width:1280px;margin:0 auto;padding:22px}
+    .review-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:14px}
+    .review-kicker{font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#a44e25}
+    .review-head h1{font-size:25px;line-height:1.15;letter-spacing:-.025em;margin:6px 0 5px}
+    .review-head p{font-size:13px;line-height:1.5;color:#566866;margin:0;max-width:720px}
+    .review-state{flex:none;min-width:212px;border:1px solid #c9c5bd;background:#fff;padding:10px 12px;font:700 12px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace}
+    .review-state span{display:block;color:#526360;font-weight:500;margin-top:2px}
+    .browser{overflow:hidden;background:#fff;border:1px solid #c9c5bd;box-shadow:0 14px 38px rgba(0,41,39,.13)}
+    .browser-bar{height:36px;border-bottom:1px solid #dedbd5;background:#f7f6f3;display:flex;align-items:center;gap:6px;padding:0 13px}
+    .browser-dot{width:8px;height:8px;border-radius:50%;background:#c9c5bd}
+    .browser-label{margin-left:8px;font-size:11px;color:#71807d}
+    .store-topbar{height:62px;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid var(--line)}
+    .store-topbar img{display:block;max-width:128px;max-height:38px}
+    .store-note{padding:9px 16px;background:#fff8ed;border-bottom:1px solid #ead9bd;color:#745a31;font-size:12px;text-align:center}
+    #mount{background:var(--bg);min-height:600px;padding:0 16px 28px}
+    #mount>.imot-ffwrap,#mount>.imot-grid{max-width:1200px;margin:0 auto}
+    .proof-note{margin-top:11px;font-size:12px;color:#63716f;line-height:1.5}
+    @media(max-width:760px){.review-shell{padding:14px}.review-head{display:block}.review-state{margin-top:12px;width:100%}.browser{overflow-x:auto}.browser-inner{min-width:390px}}
+  </style>
+</head>
+<body>
+  <main class="review-shell">
+    <header class="review-head">
+      <div>
+        <div class="review-kicker">Review only · September 17, 2026</div>
+        <h1>Wayve Wear tracking page with a real video hero</h1>
+        <p>Real production merchandising configuration and a Wayve-owned Shopify video. Shipment and order fields below are clearly labeled sample values and contain no customer data.</p>
+      </div>
+      <div class="review-state" id="video-state">Loading video…<span id="video-time">Waiting for media</span></div>
+    </header>
+    <section class="browser" aria-label="Wayve Wear tracking-page preview">
+      <div class="browser-bar"><i class="browser-dot"></i><i class="browser-dot"></i><i class="browser-dot"></i><span class="browser-label">No live order · review preview</span></div>
+      <div class="browser-inner">
+        <div class="store-topbar"><img src="https://wayvewear.com/cdn/shop/files/Wayve_logos_-_5_19e9e507-b4fd-4e8f-a3fd-65d3e59d52c4.png?v=1740002259" alt="Wayve Wear"></div>
+        <div class="store-note">Sample shipment state · no customer name, address, email, tracking number, or real order ID</div>
+        <div id="mount"></div>
+      </div>
+    </section>
+    <p class="proof-note">Use the visible Pause/Play and Unmute/Mute buttons on the hero. The status above reads the live media element, including its current playback time and sound state.</p>
+  </main>
+  <script>
+(function(){
+  var STAGES=["Ordered","Shipped","In transit","Out for delivery","Delivered"];
+  function stageIndex(c){switch(c){case"DE":return 4;case"IT":return 2;case"AT":return 1;case"NY":return 0;case"EX":return 2;default:return 0;}}
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  function fmt(ts){if(!ts)return"";try{return new Date(ts).toLocaleString(undefined,{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});}catch(e){return ts;}}
+  function money(a){return a==null?"":"$"+Number(a).toFixed(2);}
+  // Append UTM attribution to a store link so the session/order it starts is
+  // credited to the tracking page in Shopify's native analytics (and GA). One
+  // shared source across every placement; the medium says where it was clicked.
+  // Standard UTM convention — nothing custom to parse on the store side.
+  function imotUtm(url,medium){
+    if(!url)return url;var u=String(url);
+    if(u.charAt(0)==="#"||/^(mailto:|tel:|javascript:)/i.test(u))return u;
+    if(u.indexOf("utm_source=")>-1)return u;
+    return u+(u.indexOf("?")>-1?"&":"?")+"utm_source=order_tracking&utm_medium="+encodeURIComponent(medium)+"&utm_campaign=tracking_page";
+  }
+
+  // Build the promo "Shop now" href. With a code, route through Shopify's own
+  // /discount/<code>?redirect=<path> so the code is AUTO-APPLIED (discount shows at
+  // checkout, no manual copy/paste), landing on the merchant's chosen destination
+  // with UTM. Without a code, just the UTM-tagged destination.
+  function imotPromoHref(ctaUrl,code){
+    var dest=ctaUrl||"/";
+    if(code){
+      var path=dest;
+      try{if(/^https?:\/\//i.test(dest)){var u=new URL(dest);path=u.pathname+(u.search||"");}}catch(e){}
+      if(path.charAt(0)!=="/")path="/"+path;
+      return "/discount/"+encodeURIComponent(code)+"?redirect="+encodeURIComponent(imotUtm(path,"promo"));
+    }
+    return imotUtm(dest,"promo");
+  }
+
+  // Apply the per-shop brand: theme vars on the mount root, font <link>/@font-face
+  // into <head> (deduped), and the family stacks onto the root.
+  function applyBrand(d,root){
+    var t=d.theme||{},f=d.font||{};
+    function v(k,val){if(val!=null)root.style.setProperty(k,val);}
+    v("--accent",t.accent);v("--accent-soft",t.accent_soft);v("--bg",t.bg);
+    v("--bg-image",t.bg_image);
+    v("--panel",t.panel);v("--ink",t.ink);v("--muted",t.muted);v("--line",t.line);
+    if(t.radius!=null)root.style.setProperty("--radius",t.radius+"px");
+    if(f.heading)root.style.setProperty("--font-head",f.heading);
+    if(f.body)root.style.setProperty("--font-body",f.body);
+    var head=document.head||document.getElementsByTagName("head")[0];
+    (f.links||[]).forEach(function(href){
+      if(document.querySelector('link[data-imot-font="'+href+'"]'))return;
+      var l=document.createElement("link");l.rel="stylesheet";l.href=href;
+      l.setAttribute("data-imot-font",href);head.appendChild(l);
+    });
+    if(f.face_css){
+      // Update-or-create so a changed custom font refreshes in the live builder
+      // preview (which re-renders the same document), not just on a fresh load.
+      var st=document.getElementById("imot-face");
+      if(!st){st=document.createElement("style");st.id="imot-face";head.appendChild(st);}
+      if(st.textContent!==f.face_css)st.textContent=f.face_css;
+    }
+  }
+
+  function heroHtml(d){
+    if(!d.hero||(!d.hero.image_url&&!d.hero.video_url))return"";
+    var u=String(d.hero.image_url||"").replace(/["')]/g,"");
+    var v=String(d.hero.video_url||"").replace(/["')]/g,"");
+    // A blank headline is an INTENTIONAL choice (same principle as an emptied
+    // cross-sell list): the merchant's artwork is the whole hero. There is no text
+    // to protect, so drop the text block AND the dark readability scrim, which
+    // would otherwise grey out finished banner art. Every config ships with a real
+    // default headline, so this is only ever reached by clearing the field.
+    var txt=d.hero.headline==null?"":String(d.hero.headline).trim();
+    var controls='<div class="hero-video-controls" aria-label="Video playback controls"><button class="hero-video-control hero-video-play" type="button" aria-label="Pause video" aria-pressed="true">Pause</button><button class="hero-video-control hero-video-sound" type="button" aria-label="Unmute video" aria-pressed="false">Unmute</button></div>';
+    var media=v?'<video class="hero-video" autoplay muted loop playsinline preload="metadata"'+(u?' poster="'+esc(u)+'"':'')+'><source src="'+esc(v)+'"></video>'+controls:'';
+    if(!txt)return v?'<div class="hero hero-bare hero-has-video">'+media+'</div>':'<div class="hero hero-bare" style="background-image:url(\''+u+'\')"></div>';
+    return v?'<div class="hero hero-has-video">'+media+'<div class="h-txt">'+esc(txt)+'</div></div>':'<div class="hero" style="background-image:url(\''+u+'\')"><div class="h-txt">'+esc(txt)+'</div></div>';
+  }
+  function summaryHtml(d){
+    var eta=d.delivered_at||d.estimated_delivery, lbl=d.delivered_at?"Delivered":"Estimated delivery", etaBlock="";
+    if(eta){var dt=new Date(eta);
+      etaBlock='<div class="eta"><div class="lbl">'+lbl+'</div>'+
+        '<div class="dow">'+dt.toLocaleDateString(undefined,{weekday:"long",timeZone:"UTC"})+'</div>'+
+        '<div class="day">'+dt.getUTCDate()+'</div>'+
+        '<div class="mon">'+dt.toLocaleDateString(undefined,{month:"long",timeZone:"UTC"})+'</div></div>';
+    }
+    // Deliberately NOT a big "Track your package" CTA — that pulls the customer off
+    // the merchant's page to the carrier site, the opposite of what we want. Instead a
+    // small, muted tracking-number line: present and honest ("we put it there"), an
+    // underlined link to the carrier only if they actively want it. The on-page
+    // timeline tile is what carries the tracking value now.
+    var trk="";
+    if(d.tracking_number){
+      var t=esc(d.tracking_number);
+      trk='<div class="track-no">Tracking no. '+(d.carrier_tracking_url?'<a href="'+esc(d.carrier_tracking_url)+'" target="_blank" rel="noopener">'+t+'</a>':'<span>'+t+'</span>')+'</div>';
+    }else if(d.carrier_tracking_url){
+      trk='<div class="track-no"><a href="'+esc(d.carrier_tracking_url)+'" target="_blank" rel="noopener">Carrier tracking</a></div>';
+    }
+    return '<div class="summary">'+etaBlock+
+      '<div class="sum-right"><div class="status">'+esc(d.status||(stageIndex(d.status_code)?STAGES[stageIndex(d.status_code)]:"Order placed"))+'</div>'+
+      (d.detail?'<div class="detail">'+esc(d.detail)+'</div>':'')+
+      '<div class="ord">Order '+esc(d.order)+(d.carrier?" &middot; "+esc(d.carrier):"")+'</div>'+
+      trk+
+      '</div></div>';
+  }
+  function stepperHtml(d){
+    var idx=stageIndex(d.status_code);
+    if(d.status_code==="IT"&&/out for delivery/i.test(d.detail||""))idx=3;
+    var isExc=d.status_code==="EX",pct=idx<=0?0:(idx/(STAGES.length-1))*84,steps="";
+    for(var i=0;i<STAGES.length;i++){var cls=i<idx?"done":(i===idx?"current":"");if(isExc&&i===idx)cls="exception";
+      steps+='<div class="step '+cls+'"><span class="dot">'+(i<idx?"\u2713":"")+'</span><span class="lbl">'+STAGES[i]+'</span></div>';}
+    return '<div class="steps"><div class="fill" style="width:'+pct+'%"></div>'+steps+'</div>';
+  }
+  // Full carrier feedback loop: every scan (arrived / departed / out for delivery)
+  // as a connected vertical timeline, newest first, with place + time. Gymshark-style
+  // progressive disclosure: the latest scan is always shown, older scans collapse
+  // behind a "Show N earlier updates" toggle so the page stays short by default. This
+  // is a VERBOSITY axis only — every event is already in the token-scoped payload, so
+  // collapsing hides nothing sensitive, it just shortens the first paint.
+  function tlRow(e,head){
+    var where=[e.city,e.state].filter(Boolean).join(", ");
+    return '<div class="tl-row'+(head?' head':'')+'"><div class="tl-mark"><div class="tl-dot"></div></div>'+
+      '<div class="tl-body"><div class="tl-what">'+esc(e.description||e.status||"Update")+'</div>'+
+      (where?'<div class="tl-where">'+esc(where)+'</div>':'')+
+      (e.at?'<div class="tl-when">'+esc(fmt(e.at))+'</div>':'')+
+      '</div></div>';
+  }
+  function timelineHtml(d){
+    if(!d.events||!d.events.length)return"";
+    // Newest first, robust to whatever order the source provides.
+    var evs=d.events.slice().sort(function(a,b){return (new Date(b.at||0)).getTime()-(new Date(a.at||0)).getTime();});
+    var head=tlRow(evs[0],true);
+    var older=evs.slice(1);
+    if(!older.length)return '<div class="sec"><h3>Tracking history</h3><div class="tl">'+head+'</div></div>';
+    var rest=older.map(function(e){return tlRow(e,false);}).join("");
+    var n=older.length,showLbl="Show "+n+" earlier update"+(n>1?"s":"");
+    var toggle='<button type="button" class="tl-toggle" aria-expanded="false" data-show="'+showLbl+'" data-hide="Hide earlier updates">'+
+      '<span class="tl-toggle-lbl">'+showLbl+'</span><span class="tl-caret" aria-hidden="true"></span></button>';
+    return '<div class="sec"><div class="sec-head"><h3>Tracking history</h3>'+toggle+'</div>'+
+      '<div class="tl collapsed">'+head+'<div class="tl-rest">'+rest+'</div></div></div>';
+  }
+  // Multi-package: derive a package-scoped copy of d so the existing summary /
+  // stepper / timeline builders render one shipment without any new field contract —
+  // they already read status_code/status/detail/tracking_number/events off d.
+  function pkgScope(d,p){
+    var c={};for(var k in d){if(Object.prototype.hasOwnProperty.call(d,k))c[k]=d[k];}
+    c.status_code=p.status_code||"NY";c.status=p.status;c.detail=p.detail;
+    c.tracking_number=p.tracking_number;c.carrier=p.carrier;c.carrier_tracking_url=p.carrier_tracking_url;
+    c.events=p.events||[];c.estimated_delivery=p.estimated_delivery;c.delivered_at=p.delivered_at;
+    return c;
+  }
+  // A tabbed "Package 1 of N" section: one tab + one pre-rendered panel per package,
+  // first shown, the rest hidden. Panels reuse summaryHtml/stepperHtml/timelineHtml
+  // verbatim, so each box gets its own ETA, progress stepper, tracking number and
+  // full scan history. Tabs just toggle visibility (no re-render). Returns "" for
+  // 0/1 packages, so single-box orders never see it.
+  function packagesHtml(d){
+    var ps=d.packages;if(!ps||ps.length<2)return"";
+    var n=ps.length,tabs="",panels="";
+    for(var i=0;i<n;i++){var p=ps[i],sc=pkgScope(d,p);
+      var st=p.status||(STAGES[stageIndex(p.status_code)]||"Order placed");
+      tabs+='<button type="button" class="pkg-tab'+(i===0?" active":"")+'" data-pkg="'+i+'">'+
+        '<span class="pkg-n">Package '+(i+1)+'</span><span class="pkg-st">'+esc(st)+'</span></button>';
+      panels+='<div class="pkg-panel'+(i===0?"":" hidden")+'" data-pkg="'+i+'">'+
+        summaryHtml(sc)+stepperHtml(sc)+timelineHtml(sc)+'</div>';
+    }
+    return '<div class="pkgs"><div class="pkg-head">Your order shipped in '+n+' packages</div>'+
+      '<div class="pkg-tabs" role="tablist">'+tabs+'</div>'+panels+'</div>';
+  }
+  function itemsHtml(d){
+    if(!d.items||!d.items.length)return"";
+    var rows=d.items.map(function(it){
+      return '<div class="item">'+(it.image?'<img src="'+esc(it.image)+'" alt="">':'<div class="ph"></div>')+
+        '<div><div class="t">'+esc(it.title)+'</div><div class="m">'+(it.variant?esc(it.variant)+' &middot; ':'')+'Qty '+(it.qty||1)+'</div></div>'+
+        (it.price?'<div class="p">'+money(it.price)+'</div>':'')+'</div>';
+    }).join("");
+    // Gymshark-style order footer: sum the shown line items (unit price x qty). This
+    // is a SUBTOTAL of the items only — shipping/tax/discounts aren't in the tracking
+    // payload — so it's labelled honestly, never "Total".
+    var sub=0,haveP=false;
+    for(var i=0;i<d.items.length;i++){var it=d.items[i];if(it.price!=null){haveP=true;sub+=Number(it.price)*(it.qty||1);}}
+    var n=d.items.length;
+    var foot=haveP?'<div class="item-sub"><span>Subtotal &middot; '+n+' item'+(n>1?"s":"")+'</span><span class="s-amt">'+money(sub)+'</span></div>':'';
+    return '<div class="sec"><h3>Items in your order</h3>'+rows+foot+'</div>';
+  }
+  function countdownHtml(p){
+    if(!p||!p.countdown_enabled||!p.countdown_ends_at)return"";
+    var end=new Date(p.countdown_ends_at).getTime();
+    if(!isFinite(end)||end<=Date.now())return"";
+    return '<div class="cd" data-ends="'+end+'"><span>--<small>DAYS</small></span><span>--<small>HRS</small></span><span>--<small>MIN</small></span><span>--<small>SEC</small></span></div>';
+  }
+  function promoHtml(d){
+    var p=d.promo;if(!p||!p.enabled)return"";
+    var code=p.discount_code;
+    var cta=(p.cta_label&&p.cta_url)?'<a class="shop-cta" data-item-title="'+esc(p.headline||p.cta_label)+'" data-item-url="'+esc(p.cta_url)+'" href="'+esc(imotPromoHref(p.cta_url,code))+'" target="_blank" rel="noopener">'+esc(p.cta_label)+'</a>':'';
+    var codeBtn=code?'<button type="button" class="code" data-code="'+esc(code)+'" title="Click to copy" aria-label="Copy discount code '+esc(code)+'">'+esc(code)+'</button>':'';
+    var row=(cta||codeBtn)?'<div class="cta-row">'+cta+codeBtn+'</div>':'';
+    // Optional custom background image (falls back to the accent gradient).
+    var img=p.image_url?String(p.image_url).replace(/["')]/g,""):"";
+    // Background ONLY — never affects the content box (padding/flex/size stay from
+    // the .offer CSS). Accent stays as the base layer so the box looks right while
+    // the image loads or if it fails.
+    // The image is shown UNMODIFIED: merchants upload finished, on-brand banner
+    // artwork here, and the flat dark scrim this used to carry greyed that artwork
+    // out. Readability of any text drawn over it is the banner's own job now.
+    var bg=img?' style="background-color:var(--accent);background-image:url(\''+img+'\');background-size:cover;background-position:center;background-repeat:no-repeat"':"";
+    return '<div class="offer"'+bg+'><div>'+
+      (p.eyebrow?'<div class="eyebrow">'+esc(p.eyebrow)+'</div>':'')+
+      '<div class="ttl">'+esc(p.headline||"Take 10% off your next order.")+'</div>'+
+      row+
+      (code?'<div class="cta-note">Code '+esc(code)+' applies automatically at checkout</div>':'')+
+      countdownHtml(p)+
+      '</div></div>';
+  }
+  function crossSellHtml(d){
+    if(!d.cross_sell||!d.cross_sell.length)return"";
+    var code=d.promo&&d.promo.enabled?d.promo.discount_code:"";
+    var cards=d.cross_sell.map(function(p){
+      var priceHtml=p.compare_at_price&&p.compare_at_price>p.price
+        ? '<span class="was">'+money(p.compare_at_price)+'</span><span class="now">'+money(p.price)+'</span>'
+        : (p.price?money(p.price):"");
+      var atc="";
+      if(p.variant_id){var cartHref=imotUtm("/cart/"+p.variant_id+":1"+(code?"?discount="+encodeURIComponent(code):""),"cross_sell");atc='<a class="atc" data-variant="'+esc(p.variant_id)+'" data-code="'+esc(code||"")+'" data-item-title="'+esc(p.title)+'" data-item-url="'+esc(p.url||"")+'" href="'+esc(cartHref)+'">Add to cart</a>';}
+      var link=p.url?imotUtm(p.url,"cross_sell")+(code?"&discount="+encodeURIComponent(code):""):"#";
+      return '<div class="prod"><a class="xsell" data-item-title="'+esc(p.title)+'" data-item-url="'+esc(p.url||"")+'" href="'+esc(link)+'" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">'+
+        (p.image?'<img src="'+esc(p.image)+'" alt="">':'<div style="aspect-ratio:1;background:var(--bg)"></div>')+
+        '<div class="pt">'+esc(p.title)+'</div><div class="pp">'+priceHtml+'</div></a>'+atc+'</div>';
+    }).join("");
+    return '<div class="sec"><h3>Shop again</h3><div class="grid">'+cards+'</div></div>';
+  }
+  function editorialHtml(d){
+    if(!d.editorial||!d.editorial.length)return"";
+    var tiles=d.editorial.map(function(e){
+      var u=String(e.image_url||"").replace(/["')]/g,"");
+      if(!u)return"";
+      var bg=' style="background-image:url(\''+u+'\')"';
+      // Linked ONLY if the merchant gave a URL. An unlinked image must not be an
+      // anchor: <a href="#"> is a dead link for keyboard and screen-reader users.
+      if(!e.cta_url)return '<div'+bg+'></div>';
+      return '<a data-item-title="Editorial image" data-item-url="'+esc(e.cta_url)+'" href="'+esc(imotUtm(e.cta_url,"editorial"))+'" target="_blank" rel="noopener"'+bg+'></a>';
+    }).join("");
+    if(!tiles)return"";
+    return '<div class="sec"><div class="edt">'+tiles+'</div></div>';
+  }
+  function notifyHtml(d){
+    var n=d.notify;if(!n||!n.enabled)return"";
+    var label=esc(n.cta_label||"Subscribe");
+    var href=n.cta_url?esc(imotUtm(String(n.cta_url),"newsletter")):"#";
+    var h=esc(n.headline||"Join our mailing list");
+    var btn='<a class="news-cta" data-item-title="'+esc(n.headline||n.cta_label||"Subscribe")+'" data-item-url="'+esc(n.cta_url||"")+'" href="'+href+'" target="_blank" rel="noopener">'+label+'</a>';
+    var img=n.image_url?String(n.image_url).replace(/["')]/g,""):"";
+    if(img){
+      // Image banner (background only; accent base shows while the image loads).
+      // Shown UNMODIFIED — see promoHtml: the flat dark scrim greyed out finished
+      // banner artwork, so it is gone.
+      var bg=' style="background-color:var(--accent);background-image:url(\''+img+'\');background-size:cover;background-position:center;background-repeat:no-repeat"';
+      return '<div class="notify news-banner"'+bg+'><div class="nb-title">'+h+'</div>'+btn+'</div>';
+    }
+    return '<div class="notify"><div class="sec"><h3>'+h+'</h3>'+btn+'</div></div>';
+  }
+
+  // ---- Free-form canvas (V2 published layouts) ------------------------------
+  // The merchant arranged tiles in PIXELS on a fixed canvas. Honour those exact
+  // coordinates: render the canvas at its design size and scale the whole thing
+  // to fit. Nothing is snapped to the grid and nothing reflows, so the live page
+  // is pixel-identical to the builder preview, just zoomed.
+  var IMOT_CANVAS={desktop:1200,mobile:390};
+  function imotBoxList(map){
+    var out=[];
+    for(var k in map){
+      if(!Object.prototype.hasOwnProperty.call(map,k))continue;
+      var b=map[k];if(!b)continue;
+      var x=Number(b.x),y=Number(b.y),w=Number(b.w),h=Number(b.h);
+      if(!isFinite(x)||!isFinite(y)||!isFinite(w)||!isFinite(h))continue;
+      if(w<=0||h<=0)continue;
+      out.push({key:k,x:x,y:y,w:w,h:h});
+    }
+    // Paint in visual order so later tiles stack above earlier ones.
+    out.sort(function(a,b){return (a.y-b.y)||(a.x-b.x);});
+    return out;
+  }
+  function imotFreeformHtml(d,frag,rendersFn){
+    var bx=d.boxes;if(!bx)return"";
+    var wide=true;
+    try{wide=(window.innerWidth||1200)>=720;}catch(e){}
+    var dev=wide?"desktop":"mobile";
+    var map=bx[dev];
+    // Fall back to the other device's arrangement rather than showing nothing.
+    if(!map||!imotBoxList(map).length)map=wide?bx.mobile:bx.desktop;
+    if(!map)return"";
+    dev=(map===bx.mobile)?"mobile":"desktop";
+    var tiles=imotBoxList(map).filter(function(t){return rendersFn(t);});
+    if(!tiles.length)return"";
+    var H=0,cells="";
+    for(var i=0;i<tiles.length;i++){
+      var t=tiles[i];
+      if(t.y+t.h>H)H=t.y+t.h;
+      cells+='<div class="ffc ffc-'+t.key+'" style="left:'+t.x+'px;top:'+t.y+'px;width:'+t.w+'px;height:'+t.h+'px">'+
+        '<div class="imot-cell">'+frag[t.key]+'</div></div>';
+    }
+    var canvas=IMOT_CANVAS[dev]||1200;
+    return '<div class="imot-ffwrap" data-canvas="'+canvas+'" data-h="'+H+'">'+
+      '<div class="imot-ff" style="width:'+canvas+'px;height:'+H+'px">'+cells+'</div></div>';
+  }
+  // Scale the canvas to the available width (never up past 1:1) and centre it.
+  // Re-fits on resize; crossing the 720px breakpoint needs a re-render to swap
+  // device arrangements, which the host page does on navigation.
+  function imotFitFreeform(scope){
+    var wrap=scope.querySelector(".imot-ffwrap");if(!wrap)return;
+    var ff=wrap.querySelector(".imot-ff");if(!ff)return;
+    function fit(){
+      var canvas=Number(wrap.getAttribute("data-canvas"))||1200;
+      var H=Number(wrap.getAttribute("data-h"))||0;
+      var avail=wrap.clientWidth||canvas;
+      var sc=Math.min(1,avail/canvas);
+      ff.style.transformOrigin="top left";
+      ff.style.transform="scale("+sc+")";
+      ff.style.marginLeft=Math.max(0,(avail-canvas*sc)/2)+"px";
+      wrap.style.height=(H*sc)+"px";
+    }
+    fit();
+    if(!wrap._imotFit){wrap._imotFit=1;try{window.addEventListener("resize",fit);}catch(e){}}
+  }
+
+  var TILES={hero:heroHtml,summary:summaryHtml,stepper:stepperHtml,timeline:timelineHtml,items:itemsHtml,promo:promoHtml,crosssell:crossSellHtml,editorial:editorialHtml,notify:notifyHtml};
+
+  function imotCopyText(text,cb){
+    function done(){if(cb)cb();}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done,function(){imotCopyFallback(text);done();});
+    }else{imotCopyFallback(text);done();}
+  }
+  function imotCopyFallback(text){
+    try{
+      var ta=document.createElement("textarea");
+      ta.value=text;ta.setAttribute("readonly","");
+      ta.style.position="absolute";ta.style.left="-9999px";
+      document.body.appendChild(ta);ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }catch(e){}
+  }
+  // Tag the session cart as coming from the tracking page WITHOUT adding anything —
+  // fired when a shopper clicks through to a cross-sell product. The attribute rides
+  // the cart cookie, so if they add that product (or anything) and check out later,
+  // the order carries a signed session/source-order claim. keepalive so it survives
+  // the click opening the product in a new tab. Best-effort; a failure means no tag.
+  var imotCartTagged=false;
+  function imotTagCart(d){
+    if(imotCartTagged)return;imotCartTagged=true; // once per page load; clicks after are no-ops
+    if(!d||!d.attribution_claim||!d.irontrack_session_id||!d.order){imotCartTagged=false;return;}
+    var attrs={_im_source:"order_tracking",_im_session_id:d.irontrack_session_id,_im_source_order:d.order,_im_attribution_claim:d.attribution_claim};
+    try{
+      fetch("/cart/update.js",{method:"POST",headers:{"Content-Type":"application/json"},keepalive:true,body:JSON.stringify({attributes:attrs})}).catch(function(){imotCartTagged=false;});
+    }catch(e){imotCartTagged=false;}
+  }
+  // Add a cross-sell product to the cart AND tag the cart so the resulting order
+  // is attributable to the tracking page (Shopify carries cart attributes into the
+  // order's note_attributes). Same-origin storefront AJAX; on ANY failure we fall
+  // back to the plain permalink so add-to-cart never breaks for the shopper.
+  function imotAddToCartTracked(d,variantId,code,fallbackHref){
+    function fallback(){
+      try{window.location.href=fallbackHref||imotUtm("/cart/"+variantId+":1"+(code?"?discount="+encodeURIComponent(code):""),"cross_sell");}catch(e){}
+    }
+    try{
+      fetch("/cart/add.js",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:variantId,quantity:1})})
+        .then(function(r){if(!r.ok)throw 0;
+          if(!d||!d.attribution_claim||!d.irontrack_session_id||!d.order)throw 0;
+          return fetch("/cart/update.js",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({attributes:{_im_source:"order_tracking",_im_session_id:d.irontrack_session_id,_im_source_order:d.order,_im_attribution_claim:d.attribution_claim}})});
+        })
+        .then(function(r){if(!r.ok)throw 0;
+          window.location.href=imotUtm(code?("/discount/"+encodeURIComponent(code)+"?redirect=/checkout"):"/checkout","cross_sell");
+        })
+        .catch(fallback);
+    }catch(e){fallback();}
+  }
+  function wireCopyCodes(scope,onCopy){
+    Array.prototype.forEach.call(scope.querySelectorAll(".code[data-code]"),function(btn){
+      btn.addEventListener("click",function(){
+        var c=btn.getAttribute("data-code")||"";if(!c)return;
+        imotCopyText(c,function(){
+          if(btn._imotT)clearTimeout(btn._imotT);
+          btn.classList.add("copied");btn.textContent="Copied!";
+          btn._imotT=setTimeout(function(){btn.textContent=c;btn.classList.remove("copied");},1600);
+          if(onCopy)onCopy(btn);
+        });
+      });
+    });
+  }
+  function startCountdowns(scope){
+    // Clear any prior interval on this mount before starting a new one, so the
+    // builder preview (which re-renders in place on every edit) can't leak timers.
+    if(scope._imotCd){clearInterval(scope._imotCd);scope._imotCd=null;}
+    var els=scope.querySelectorAll(".cd[data-ends]");
+    if(!els.length)return;
+    function tick(){
+      Array.prototype.forEach.call(els,function(el){
+        var end=Number(el.getAttribute("data-ends")),diff=Math.max(0,end-Date.now());
+        var s=Math.floor(diff/1000),dd=Math.floor(s/86400),hh=Math.floor((s%86400)/3600),mm=Math.floor((s%3600)/60),ss=s%60;
+        var sp=el.getElementsByTagName("span");
+        function set(i,val){if(sp[i])sp[i].firstChild.nodeValue=(val<10?"0":"")+val;}
+        set(0,dd);set(1,hh);set(2,mm);set(3,ss);
+      });
+    }
+    tick();scope._imotCd=setInterval(tick,1000);
+  }
+
+  function wireHeroVideos(scope){
+    Array.prototype.forEach.call(scope.querySelectorAll(".hero-has-video"),function(hero){
+      var video=hero.querySelector(".hero-video"),play=hero.querySelector(".hero-video-play"),sound=hero.querySelector(".hero-video-sound");
+      if(!video||!play||!sound)return;
+      function sync(){
+        var playing=!video.paused&&!video.ended;
+        play.textContent=playing?"Pause":"Play";
+        play.setAttribute("aria-label",playing?"Pause video":"Play video");
+        play.setAttribute("aria-pressed",playing?"true":"false");
+        sound.textContent=video.muted?"Unmute":"Mute";
+        sound.setAttribute("aria-label",video.muted?"Unmute video":"Mute video");
+        sound.setAttribute("aria-pressed",video.muted?"false":"true");
+        hero.setAttribute("data-video-state",playing?"playing":"paused");
+        hero.setAttribute("data-audio-state",video.muted?"muted":"unmuted");
+      }
+      play.addEventListener("click",function(){
+        if(video.paused){var p=video.play();if(p&&p.catch)p.catch(sync);}else{video.pause();}
+        sync();
+      });
+      sound.addEventListener("click",function(){video.muted=!video.muted;sync();});
+      video.addEventListener("play",sync);video.addEventListener("pause",sync);video.addEventListener("volumechange",sync);video.addEventListener("ended",sync);
+      sync();
+    });
+  }
+
+  // Render into mountEl. opts.onNotify(value,channel) + opts.onImpression(d) hooks.
+  function render(d,mountEl,opts){
+    opts=opts||{};
+    var root=opts.brandRoot||mountEl;
+    applyBrand(d,root);
+    // Lay out the saved responsive grid: place each enabled tile by its DESKTOP
+    // coords on wide screens (CSS grid; rules live in the tracking CSS), and
+    // collapse to the MOBILE-ordered single-column stack below the breakpoint.
+    // Each tile is its own card (the .imot-cell). Tolerates a legacy flat array.
+    var layout=d.layout||{},desktop,mobile;
+    if(Object.prototype.toString.call(layout)==="[object Array]"){
+      desktop=[];for(var li=0;li<layout.length;li++){desktop.push({key:layout[li].key,enabled:layout[li].enabled!==false,x:0,y:li,w:12,h:1});}
+      mobile=desktop;
+    }else{desktop=layout.desktop||[];mobile=layout.mobile||[];}
+    function byYX(a,b){return (a.y-b.y)||(a.x-b.x);}
+    function en(t){return !!t&&t.enabled!==false;}
+    // Render each tile's content ONCE, and only keep tiles that actually produce
+    // markup — a tile can be enabled yet render nothing (hero with no image,
+    // timeline with no events, empty cross-sell). Excluding them before ranking /
+    // ordering means an empty tile never reserves a desktop grid row (which would
+    // leave a blank row gap) or a mobile stack slot.
+    // Multi-package (gated to the full hosted page via opts.packages, so the V2
+    // per-tile path is untouched): the summary/stepper/timeline tiles are folded
+    // into a single tabbed "packages" section rendered above the grid, so they're
+    // never also shown standalone. Single-package orders keep every tile as-is.
+    var multi=!!(opts.packages&&d.packages&&d.packages.length>=2);
+    var STATUS_TILES={summary:1,stepper:1,timeline:1};
+    var frag={};
+    // opts.pkg (set by the V2 per-tile canvas path) scopes the status tiles to one
+    // package without folding — each summary/stepper/timeline box renders the chosen
+    // shipment. opts.packages (the standard grid path) instead folds them into one
+    // tabbed section. The two are mutually exclusive by render path.
+    function renders(t){var k=t.key;
+      if(multi&&STATUS_TILES[k]){frag[k]="";return false;}
+      if(!(k in frag)){
+        var dd=(opts.pkg&&STATUS_TILES[k])?pkgScope(d,opts.pkg):d;
+        var fn=TILES[k];frag[k]=fn?fn(dd):"";}
+      return !!frag[k];}
+    var dEn=desktop.filter(en).filter(renders).sort(byYX);
+    var mEn=mobile.filter(en).filter(renders).sort(byYX);
+    // Dense-rank the distinct desktop y values so tiles sharing a row line up.
+    var dMeta={},rank=0,lastY=null;
+    for(var i=0;i<dEn.length;i++){var dt=dEn[i];if(lastY===null||dt.y!==lastY){rank++;lastY=dt.y;}dMeta[dt.key]={dx:dt.x+1,dw:dt.w,dr:rank,dh:dt.h};}
+    var mOrder={};for(var mi=0;mi<mEn.length;mi++){mOrder[mEn[mi].key]=mi+1;}
+    // DOM order: desktop order first, then any mobile-only tiles.
+    var order=[],seen={};
+    for(var oi=0;oi<dEn.length;oi++){order.push(dEn[oi].key);seen[dEn[oi].key]=1;}
+    for(var oj=0;oj<mEn.length;oj++){if(!seen[mEn[oj].key]){order.push(mEn[oj].key);seen[mEn[oj].key]=1;}}
+    var html="";
+    for(var ci=0;ci<order.length;ci++){
+      var key=order[ci];
+      var dm=dMeta[key],mo=mOrder[key];
+      var vars="--dx:"+(dm?dm.dx:1)+";--dw:"+(dm?dm.dw:12)+";--dr:"+(dm?dm.dr:1)+";--dh:"+(dm?dm.dh:1)+";--mo:"+(mo!=null?mo:999)+";";
+      var cls="imot-cell"+(dm?"":" imot-d-off")+(mo!=null?"":" imot-m-off");
+      html+='<div class="'+cls+'" style="'+vars+'">'+frag[key]+'</div>';
+    }
+    var pkgbar=multi?'<div class="imot-pkgbar">'+packagesHtml(d)+'</div>':'';
+    // A published V2 layout takes the free-form path; every shop without boxes
+    // renders from the grid above, byte-for-byte as before.
+    var ff=imotFreeformHtml(d,frag,renders);
+    mountEl.innerHTML=pkgbar+(ff||'<div class="imot-grid">'+html+'</div>');
+    if(ff)imotFitFreeform(mountEl);
+    startCountdowns(mountEl);
+    wireHeroVideos(mountEl);
+
+    if(opts.onImpression)opts.onImpression(d);
+    Array.prototype.forEach.call(mountEl.querySelectorAll(".atc"),function(a){
+      a.addEventListener("click",function(ev){
+        if(opts.onClick)opts.onClick(d,"add_to_cart",{itemTitle:a.getAttribute("data-item-title"),itemUrl:a.getAttribute("data-item-url")});
+        var vid=a.getAttribute("data-variant");if(!vid)return;
+        ev.preventDefault();
+        imotAddToCartTracked(d,vid,a.getAttribute("data-code")||"",a.getAttribute("href"));
+      });
+    });
+    Array.prototype.forEach.call(mountEl.querySelectorAll(".xsell"),function(a){
+      a.addEventListener("click",function(){
+        if(opts.onClick)opts.onClick(d,"product_click",{itemTitle:a.getAttribute("data-item-title"),itemUrl:a.getAttribute("data-item-url")});
+        imotTagCart(d); // tag the session cart so a later purchase attributes to us
+      });
+    });
+    // The promo "Shop now" CTA is a real store click-through: record it as an
+    // engagement (promo_click) AND tag the cart, so a browse-then-buy after it
+    // attributes to the tracking page. Opens in a new tab, so this page stays put
+    // and the beacon fires normally.
+    Array.prototype.forEach.call(mountEl.querySelectorAll(".shop-cta"),function(a){
+      a.addEventListener("click",function(){
+        if(opts.onClick)opts.onClick(d,"promo_click",{itemTitle:a.getAttribute("data-item-title"),itemUrl:a.getAttribute("data-item-url")});
+        imotTagCart(d);
+      });
+    });
+    // Image tiles: tag the cart on click-through (no separate event). Only the
+    // ones the merchant gave a link are anchors, so this skips plain images.
+    Array.prototype.forEach.call(mountEl.querySelectorAll(".edt a"),function(a){
+      a.addEventListener("click",function(){
+        if(opts.onClick)opts.onClick(d,"editorial_click",{itemTitle:a.getAttribute("data-item-title"),itemUrl:a.getAttribute("data-item-url")});
+        imotTagCart(d);
+      });
+    });
+    wireCopyCodes(mountEl,function(btn){
+      if(opts.onClick)opts.onClick(d,"copy_code",{itemTitle:"Discount code "+(btn.getAttribute("data-code")||"")});
+      imotTagCart(d);
+    });
+    // Timeline "Show/Hide earlier updates" toggle (aria-expanded driven, mirroring the
+    // MakerKit accordion trigger). The .tl only ever carries "tl" or "tl collapsed",
+    // so reset the class outright rather than parsing a list.
+    Array.prototype.forEach.call(mountEl.querySelectorAll(".tl-toggle"),function(btn){
+      btn.addEventListener("click",function(){
+        var tl=btn.parentNode.parentNode.querySelector(".tl");
+        if(!tl)return;
+        var expand=tl.className.indexOf("collapsed")>-1;
+        tl.className=expand?"tl":"tl collapsed";
+        btn.setAttribute("aria-expanded",expand?"true":"false");
+        var lbl=btn.querySelector(".tl-toggle-lbl");
+        if(lbl)lbl.firstChild.nodeValue=expand?btn.getAttribute("data-hide"):btn.getAttribute("data-show");
+      });
+    });
+    // Package tabs: pre-rendered panels, so a click just swaps which is visible (no
+    // re-render). Reuses the already-wired timeline toggles inside each panel.
+    Array.prototype.forEach.call(mountEl.querySelectorAll(".pkg-tab"),function(btn){
+      btn.addEventListener("click",function(){
+        var i=btn.getAttribute("data-pkg");
+        var wrap=btn;while(wrap&&(!wrap.className||wrap.className.indexOf("pkgs")<0))wrap=wrap.parentNode;
+        if(!wrap)return;
+        Array.prototype.forEach.call(wrap.querySelectorAll(".pkg-tab"),function(b){
+          b.className=(b.getAttribute("data-pkg")===i)?"pkg-tab active":"pkg-tab";});
+        Array.prototype.forEach.call(wrap.querySelectorAll(".pkg-panel"),function(pnl){
+          pnl.className=(pnl.getAttribute("data-pkg")===i)?"pkg-panel":"pkg-panel hidden";});
+      });
+    });
+    // Newsletter "Subscribe" is a click-through to the merchant's own signup link
+    // (opens in a new tab). We only count the click — no email collected.
+    Array.prototype.forEach.call(mountEl.querySelectorAll(".news-cta"),function(a){
+      a.addEventListener("click",function(){
+        if(opts.onClick)opts.onClick(d,"newsletter_click",{itemTitle:a.getAttribute("data-item-title"),itemUrl:a.getAttribute("data-item-url")});
+        imotTagCart(d);
+      });
+    });
+  }
+
+  window.IMOT={render:render,applyBrand:applyBrand};
+})();
+</script>
+  <script>
+    IMOT.render({"found":true,"order":"Preview order","status":"In transit","status_code":"IT","detail":"Sample shipment status for layout review","carrier":"Sample carrier","estimated_delivery":"2026-09-22","events":[{"at":"2026-09-17T18:30:00Z","description":"Sample package update","city":"","state":"","status":"IN_TRANSIT"}],"items":[{"title":"Sample order item","variant":"Preview only","qty":1,"price":null,"image":"https://cdn.shopify.com/s/files/1/0835/2877/8012/files/23.jpg?v=1765860480"}],"theme":{"accent":"#e1763d","accent_soft":"rgba(225,118,61,0.1)","bg":"#f4f4f5","bg_image":"none","panel":"#FFFFFF","ink":"#002927","muted":"#767a80","line":"#e9eaec","radius":0},"font":{"heading":"\"Inter\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif","body":"\"Inter\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif","links":["https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"],"face_css":""},"layout":{"desktop":[{"key":"hero","enabled":true,"x":0,"y":0,"w":12,"h":6},{"key":"summary","enabled":true,"x":0,"y":6,"w":12,"h":4},{"key":"stepper","enabled":true,"x":0,"y":10,"w":12,"h":3},{"key":"timeline","enabled":true,"x":0,"y":13,"w":12,"h":6},{"key":"items","enabled":true,"x":0,"y":19,"w":12,"h":5},{"key":"promo","enabled":true,"x":0,"y":24,"w":12,"h":4},{"key":"crosssell","enabled":true,"x":0,"y":28,"w":12,"h":6},{"key":"editorial","enabled":true,"x":0,"y":34,"w":12,"h":4},{"key":"notify","enabled":true,"x":0,"y":38,"w":12,"h":3}],"mobile":[{"key":"hero","enabled":true,"x":0,"y":0,"w":12,"h":6},{"key":"summary","enabled":true,"x":0,"y":6,"w":12,"h":4},{"key":"stepper","enabled":true,"x":0,"y":10,"w":12,"h":3},{"key":"timeline","enabled":true,"x":0,"y":13,"w":12,"h":6},{"key":"items","enabled":true,"x":0,"y":19,"w":12,"h":5},{"key":"promo","enabled":true,"x":0,"y":24,"w":12,"h":4},{"key":"crosssell","enabled":true,"x":0,"y":28,"w":12,"h":6},{"key":"editorial","enabled":true,"x":0,"y":34,"w":12,"h":4},{"key":"notify","enabled":true,"x":0,"y":38,"w":12,"h":3}]},"boxes":{"desktop":{"hero":{"x":0,"y":0,"w":1200,"h":340},"items":{"x":0,"y":668,"w":584,"h":192},"promo":{"x":608,"y":668,"w":592,"h":192},"notify":{"x":0,"y":1252,"w":1200,"h":120},"stepper":{"x":0,"y":540,"w":1200,"h":112},"summary":{"x":0,"y":356,"w":584,"h":168},"timeline":{"x":608,"y":356,"w":592,"h":168},"crosssell":{"x":0,"y":876,"w":1200,"h":360}},"mobile":{"hero":{"x":0,"y":0,"w":390,"h":270},"items":{"x":0,"y":852,"w":390,"h":188},"promo":{"x":0,"y":1054,"w":390,"h":176},"notify":{"x":0,"y":1608,"w":390,"h":120},"stepper":{"x":0,"y":548,"w":390,"h":109},"summary":{"x":0,"y":284,"w":390,"h":250},"timeline":{"x":0,"y":671,"w":390,"h":167},"crosssell":{"x":0,"y":1244,"w":390,"h":350}}},"hero":{"headline":"Your order is on its way!","image_url":"https://cdn.shopify.com/s/files/1/0835/2877/8012/files/Untitled_design_2.png?v=1786120974","video_url":"https://cdn.shopify.com/videos/c/vp/af50022f0b064f4ca032e4b0b88633b1/af50022f0b064f4ca032e4b0b88633b1.HD-1080p-7.2Mbps-37461886.mp4"},"promo":{"enabled":true,"id":"track10-default","eyebrow":"","headline":"Take 10% off your next order","discount_code":"TRACK10","cta_label":"Apply 10% off","cta_url":"https://wayvewear.com/discount/TRACK10","image_url":null,"countdown_enabled":false,"countdown_ends_at":null,"days_valid":0,"percent":10,"checkout_message":"","discount_gid":null},"cross_sell":[{"title":"Bird Tracks Cotton Hat","price":39,"url":"/products/bird-tracks-cotton-hat","image":"https://cdn.shopify.com/s/files/1/0835/2877/8012/files/23.jpg?v=1765860480","compare_at_price":null,"variant_id":"53534914806044"},{"title":"Classic Short: Organic Cotton Short","price":55,"url":"/products/classic-short-organic-cotton-short","image":"https://cdn.shopify.com/s/files/1/0835/2877/8012/files/Walnut_Classic_Short_dbe00577-611a-4619-8cd9-e6d5d5ae655e.png?v=1781227076","compare_at_price":null,"variant_id":"47018111729948"},{"title":"Only Tee: Organic Cotton Tee","price":45,"url":"/products/only-tee-organic-cotton-tee","image":"https://cdn.shopify.com/s/files/1/0835/2877/8012/files/Vintage_Black_Only_Tee.png?v=1778122266","compare_at_price":null,"variant_id":"47387703476508"}],"editorial":[],"notify":{"enabled":true,"headline":"Stay in the loop","cta_label":"Join the newsletter","cta_url":"https://wayvewear.com/pages/subscribe","image_url":null}},document.getElementById("mount"),{brandRoot:document.documentElement,onImpression:function(){},onClick:function(){},onNotify:function(){}});
+    (function(){
+      var video=document.querySelector(".hero-video"),state=document.getElementById("video-state"),time=document.getElementById("video-time");
+      if(!video){state.textContent="Video unavailable";time.textContent="No video element rendered";return;}
+      function update(){
+        var playing=!video.paused&&!video.ended;
+        state.firstChild.nodeValue=(playing?"Playing":"Paused")+" · "+(video.muted?"Muted":"Sound on");
+        time.textContent="Live media time "+video.currentTime.toFixed(1)+"s of "+(Number.isFinite(video.duration)?video.duration.toFixed(1)+"s":"…");
+      }
+      video.addEventListener("play",update);video.addEventListener("pause",update);video.addEventListener("volumechange",update);video.addEventListener("timeupdate",update);video.addEventListener("loadedmetadata",update);video.addEventListener("error",function(){state.firstChild.nodeValue="Video error";time.textContent="The Shopify asset could not load";});
+      setInterval(update,250);update();
+      if(new URLSearchParams(location.search).get("proof")==="controls"){
+        var play=document.querySelector(".hero-video-play"),sound=document.querySelector(".hero-video-sound");
+        setTimeout(function(){if(video.muted&&sound)sound.click();},1200);
+        setTimeout(function(){if(!video.paused&&play)play.click();},2700);
+        setTimeout(function(){if(video.paused&&play)play.click();},3800);
+      }
+    })();
+  </script>
+</body>
+</html>
