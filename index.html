@@ -48,6 +48,7 @@
   .hero-video-control{appearance:none;border:1px solid rgba(255,255,255,.58);border-radius:999px;background:rgba(0,20,19,.78);color:#fff;cursor:pointer;font:700 12px/1 var(--font-body);letter-spacing:.01em;padding:10px 13px;min-width:70px;box-shadow:0 3px 12px rgba(0,0,0,.22);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
   .hero-video-control:hover{background:rgba(0,20,19,.92)}
   .hero-video-control:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  .hero-video-control:disabled{cursor:not-allowed;opacity:.6}
   /* Headline-less hero: the banner art is the content, so no scrim over it. */
   .hero-bare::after{display:none}
   .hero .h-txt{position:relative;z-index:1;color:#fff;padding:30px 28px;font-size:clamp(26px,4.4vw,36px);line-height:1.1;letter-spacing:-.01em;font-weight:600;max-width:92%;text-shadow:0 1px 18px rgba(0,0,0,.4)}
@@ -323,7 +324,7 @@
     // would otherwise grey out finished banner art. Every config ships with a real
     // default headline, so this is only ever reached by clearing the field.
     var txt=d.hero.headline==null?"":String(d.hero.headline).trim();
-    var controls='<div class="hero-video-controls" aria-label="Video playback controls"><button class="hero-video-control hero-video-play" type="button" aria-label="Pause video" aria-pressed="true">Pause</button><button class="hero-video-control hero-video-sound" type="button" aria-label="Unmute video" aria-pressed="false">Unmute</button></div>';
+    var controls='<div class="hero-video-controls" aria-label="Video playback controls"><button class="hero-video-control hero-video-play" type="button" aria-label="Pause video">Pause</button><button class="hero-video-control hero-video-sound" type="button" aria-label="Unmute video">Unmute</button></div>';
     var media=v?'<video class="hero-video" autoplay muted loop playsinline preload="metadata"'+(u?' poster="'+esc(u)+'"':'')+'><source src="'+esc(v)+'"></video>'+controls:'';
     if(!txt)return v?'<div class="hero hero-bare hero-has-video">'+media+'</div>':'<div class="hero hero-bare" style="background-image:url(\''+u+'\')"></div>';
     return v?'<div class="hero hero-has-video">'+media+'<div class="h-txt">'+esc(txt)+'</div></div>':'<div class="hero" style="background-image:url(\''+u+'\')"><div class="h-txt">'+esc(txt)+'</div></div>';
@@ -665,19 +666,23 @@
         var playing=!video.paused&&!video.ended;
         play.textContent=playing?"Pause":"Play";
         play.setAttribute("aria-label",playing?"Pause video":"Play video");
-        play.setAttribute("aria-pressed",playing?"true":"false");
         sound.textContent=video.muted?"Unmute":"Mute";
         sound.setAttribute("aria-label",video.muted?"Unmute video":"Mute video");
-        sound.setAttribute("aria-pressed",video.muted?"false":"true");
         hero.setAttribute("data-video-state",playing?"playing":"paused");
         hero.setAttribute("data-audio-state",video.muted?"muted":"unmuted");
+      }
+      function fail(){
+        play.disabled=true;sound.disabled=true;
+        play.textContent="Video unavailable";play.setAttribute("aria-label","Video unavailable");
+        sound.textContent="Sound unavailable";sound.setAttribute("aria-label","Sound unavailable");
+        hero.setAttribute("data-video-state","error");
       }
       play.addEventListener("click",function(){
         if(video.paused){var p=video.play();if(p&&p.catch)p.catch(sync);}else{video.pause();}
         sync();
       });
       sound.addEventListener("click",function(){video.muted=!video.muted;sync();});
-      video.addEventListener("play",sync);video.addEventListener("pause",sync);video.addEventListener("volumechange",sync);video.addEventListener("ended",sync);
+      video.addEventListener("play",sync);video.addEventListener("pause",sync);video.addEventListener("volumechange",sync);video.addEventListener("ended",sync);video.addEventListener("error",fail);
       sync();
     });
   }
@@ -829,17 +834,20 @@
     (function(){
       var video=document.querySelector(".hero-video"),state=document.getElementById("video-state"),time=document.getElementById("video-time");
       if(!video){state.textContent="Video unavailable";time.textContent="No video element rendered";return;}
+      var mediaError=false;
       function update(){
+        if(mediaError)return;
         var playing=!video.paused&&!video.ended;
         state.firstChild.nodeValue=(playing?"Playing":"Paused")+" · "+(video.muted?"Muted":"Sound on");
         time.textContent="Live media time "+video.currentTime.toFixed(1)+"s of "+(Number.isFinite(video.duration)?video.duration.toFixed(1)+"s":"…");
       }
-      video.addEventListener("play",update);video.addEventListener("pause",update);video.addEventListener("volumechange",update);video.addEventListener("timeupdate",update);video.addEventListener("loadedmetadata",update);video.addEventListener("error",function(){state.firstChild.nodeValue="Video error";time.textContent="The Shopify asset could not load";});
+      video.addEventListener("play",update);video.addEventListener("pause",update);video.addEventListener("volumechange",update);video.addEventListener("timeupdate",update);video.addEventListener("loadedmetadata",update);video.addEventListener("error",function(){mediaError=true;state.firstChild.nodeValue="Video error";time.textContent="The Shopify asset could not load";});
       setInterval(update,250);update();
       if(new URLSearchParams(location.search).get("proof")==="controls"){
         var play=document.querySelector(".hero-video-play"),sound=document.querySelector(".hero-video-sound");
         setTimeout(function(){if(video.muted&&sound)sound.click();},1200);
         setTimeout(function(){if(!video.paused&&play)play.click();},2700);
+        setTimeout(function(){if(!video.muted&&sound)sound.click();},3500);
         setTimeout(function(){if(video.paused&&play)play.click();},3800);
       }
     })();
