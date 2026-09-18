@@ -660,8 +660,10 @@
 
   function wireHeroVideos(scope){
     Array.prototype.forEach.call(scope.querySelectorAll(".hero-has-video"),function(hero){
+      if(hero.getAttribute("data-video-wired")==="true")return;
       var video=hero.querySelector(".hero-video"),play=hero.querySelector(".hero-video-play"),sound=hero.querySelector(".hero-video-sound");
       if(!video||!play||!sound)return;
+      hero.setAttribute("data-video-wired","true");
       function sync(){
         var playing=!video.paused&&!video.ended;
         play.textContent=playing?"Pause":"Play";
@@ -690,6 +692,9 @@
   // Render into mountEl. opts.onNotify(value,channel) + opts.onImpression(d) hooks.
   function render(d,mountEl,opts){
     opts=opts||{};
+    var keptHero=opts.preserveHeroVideo?mountEl.querySelector(".hero-has-video"):null;
+    var keptSource=keptHero&&keptHero.querySelector("source");
+    keptSource=keptSource?keptSource.getAttribute("src"):"";
     var root=opts.brandRoot||mountEl;
     applyBrand(d,root);
     // Lay out the saved responsive grid: place each enabled tile by its DESKTOP
@@ -749,6 +754,10 @@
     var ff=imotFreeformHtml(d,frag,renders);
     mountEl.innerHTML=pkgbar+(ff||'<div class="imot-grid">'+html+'</div>');
     if(ff)imotFitFreeform(mountEl);
+    if(keptHero&&keptSource){
+      var nextHero=mountEl.querySelector(".hero-has-video"),nextSource=nextHero&&nextHero.querySelector("source");
+      if(nextHero&&nextSource&&nextSource.getAttribute("src")===keptSource)nextHero.parentNode.replaceChild(keptHero,nextHero);
+    }
     startCountdowns(mountEl);
     wireHeroVideos(mountEl);
 
